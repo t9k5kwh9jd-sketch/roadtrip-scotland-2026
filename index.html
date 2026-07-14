@@ -24,7 +24,44 @@
 <section id="tickets" class="view"><div class="section-head"><div><h2>Tickets</h2><p>Buchungen und Reservierungen abhaken.</p></div></div><div class="card" id="ticketList"></div></section>
 <section id="unterkuenfte" class="view"><div class="section-head"><div><h2>Unterkünfte</h2><p>Alle Übernachtungsorte auf einen Blick.</p></div></div><div id="hotelList" class="grid"></div></section>
 <section id="packliste" class="view"><div class="section-head"><div><h2>Packliste</h2><p>Deine Auswahl bleibt auf diesem Gerät gespeichert.</p></div></div><div class="card" id="packList"></div></section>
-<section id="budget" class="view"><div class="section-head"><div><h2>Budget</h2><p>Planwerte anpassen – die Summe aktualisiert sich sofort.</p></div></div><div class="grid"><div class="card"><div class="label">Aktuelle Plansumme</div><div class="total" id="budgetTotal">£0</div><p class="muted">Enthält die bisher bezifferten Reisebausteine.</p></div><div class="card light" id="budgetList"></div></div></section></main><footer>Roadtrip Scotland 2026 · mit Charlie geplant · offline vorbereitet</footer>
+<section id="budget" class="view">
+<div class="section-head"><div><h2>Ausgabenbuch</h2><p>Sämtliche Reiseausgaben erfassen, auswerten und sichern.</p></div></div>
+<div class="budget-dashboard">
+  <div class="card"><div class="label">Gesamtausgaben</div><div class="total" id="expenseTotal">£0.00</div><p class="muted" id="expenseCount">Noch keine Ausgaben erfasst.</p></div>
+  <div class="card"><div class="label">Pro Person</div><div class="metric" id="expensePerPerson">£0.00</div><p class="muted">Gleichmäßig auf vier Reisende gerechnet.</p></div>
+  <div class="card"><div class="label">Heute</div><div class="metric" id="expenseToday">£0.00</div><p class="muted">Ausgaben des ausgewählten Tages.</p></div>
+</div>
+<div class="card expense-form-card">
+  <div class="section-subhead"><div><h3>Ausgabe erfassen</h3><p class="muted">Alle Felder außer Notiz sind für eine saubere Abrechnung gedacht.</p></div><button class="btn secondary" id="cancelExpenseEdit" hidden>Bearbeitung abbrechen</button></div>
+  <form id="expenseForm" class="expense-form">
+    <input type="hidden" id="expenseId">
+    <label>Datum<input id="expenseDate" type="date" required></label>
+    <label>Kategorie<select id="expenseCategory" required><option>Unterkunft</option><option>Mietwagen</option><option>Benzin</option><option>Parken</option><option>Flug</option><option>Öffentlicher Verkehr</option><option>Restaurant</option><option>Café</option><option>Lebensmittel</option><option>Tickets</option><option>Whisky</option><option>Shopping</option><option>Trinkgeld</option><option>Sonstiges</option></select></label>
+    <label class="wide">Beschreibung<input id="expenseDescription" placeholder="z. B. Abendessen in Glasgow" required></label>
+    <label>Betrag<input id="expenseAmount" type="number" min="0" step="0.01" inputmode="decimal" required></label>
+    <label>Währung<select id="expenseCurrency"><option value="GBP">GBP (£)</option><option value="EUR">EUR (€)</option></select></label>
+    <label>Bezahlt von<select id="expensePayer"><option>Reisender 1</option><option>Reisender 2</option><option>Reisender 3</option><option>Reisender 4</option><option>Gemeinschaftskasse</option></select></label>
+    <label>Betrifft<select id="expenseFor"><option>Alle 4</option><option>Paar 1</option><option>Paar 2</option><option>Nur Reisender 1</option><option>Nur Reisender 2</option><option>Nur Reisender 3</option><option>Nur Reisender 4</option></select></label>
+    <label>Zahlungsart<select id="expenseMethod"><option>Kreditkarte</option><option>Debitkarte</option><option>Bar</option><option>Apple Pay</option><option>Überweisung</option><option>Sonstiges</option></select></label>
+    <label class="wide">Notiz<input id="expenseNote" placeholder="optional"></label>
+    <button class="btn wide" type="submit" id="saveExpense">Ausgabe speichern</button>
+  </form>
+</div>
+<div class="card">
+  <div class="section-subhead"><div><h3>Ausgaben</h3><p class="muted">Filter, bearbeiten oder löschen.</p></div></div>
+  <div class="expense-filters"><input id="expenseSearch" class="search" placeholder="Beschreibung, Kategorie oder Person suchen …"><input id="expenseFilterDate" type="date"><select id="expenseFilterCategory"><option value="">Alle Kategorien</option></select></div>
+  <div id="expenseList"></div>
+</div>
+<div class="grid budget-tools">
+  <div class="card"><div class="label">Nach Kategorie</div><div id="expenseByCategory"></div></div>
+  <div class="card"><div class="label">Nach zahlender Person</div><div id="expenseByPayer"></div></div>
+</div>
+<div class="card">
+  <div class="section-subhead"><div><h3>Sicherung & Export</h3><p class="muted">Die Daten liegen nur auf diesem Gerät. Regelmäßig sichern.</p></div></div>
+  <div class="tool-row"><button class="btn" id="exportExpensesCsv">CSV exportieren</button><button class="btn" id="backupExpenses">Sicherung erstellen</button><label class="btn file-btn">Sicherung importieren<input id="restoreExpenses" type="file" accept="application/json" hidden></label><button class="btn danger" id="clearExpenses">Alle Ausgaben löschen</button></div>
+</div>
+<div class="notice"><b>Wichtig:</b> Ausgaben werden lokal auf dem jeweiligen Gerät gespeichert und nicht automatisch zwischen den vier iPhones synchronisiert.</div>
+</section></main><footer>Roadtrip Scotland 2026 · mit Charlie geplant · offline vorbereitet</footer>
 <script src="app.js" defer></script>
 </body>
 </html>
