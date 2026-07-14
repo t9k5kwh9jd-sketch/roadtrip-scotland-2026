@@ -1,9 +1,42 @@
-const CACHE = 'roadtrip-scotland-2026-v4.0-build1-foundation';
+const CACHE = 'roadtrip-scotland-2026-v4.0-build2';
 const ASSETS = [
   './', './index.html', './css/app.css', './css/variables.css', './css/base.css',
   './css/components.css', './css/pages.css', './data/trip-data.js', './js/app.js',
-  './manifest.webmanifest', './assets/icons/icon-180.png',
-  './assets/icons/icon-192.png', './assets/icons/icon-512.png'
+  './data/image-manifest.js', './js/components/cards.js', './manifest.webmanifest', './assets/icons/icon-180.png',
+  './assets/icons/icon-192.png', './assets/icons/icon-512.png',
+  './assets/images/sights/applecross.svg',
+  './assets/images/sights/bealach-na-ba-viewpoint.svg',
+  './assets/images/sights/bealach-na-gaoithe-viewpoint.svg',
+  './assets/images/sights/calton-hill.svg',
+  './assets/images/sights/circus-lane.svg',
+  './assets/images/sights/dean-village.svg',
+  './assets/images/sights/dunnottar-castle.svg',
+  './assets/images/sights/eilean-donan-castle.svg',
+  './assets/images/sights/glasgow-city-centre.svg',
+  './assets/images/sights/neist-point.svg',
+  './assets/images/sights/old-man-of-storr.svg',
+  './assets/images/sights/quiraing.svg',
+  './assets/images/sights/regent-road.svg',
+  './assets/images/sights/talisker-bay.svg',
+  './assets/images/sights/the-vennel.svg',
+  './assets/images/sights/victoria-terrace.svg',
+  './assets/images/restaurants/applecross-inn.svg',
+  './assets/images/restaurants/ben-nevis-inn.svg',
+  './assets/images/restaurants/cafe-andaluz-aberdeen.svg',
+  './assets/images/restaurants/cafe-gandolfi.svg',
+  './assets/images/restaurants/edinbane-inn.svg',
+  './assets/images/restaurants/garrison-west.svg',
+  './assets/images/restaurants/makars-mash-bar.svg',
+  './assets/images/restaurants/ox-and-finch.svg',
+  './assets/images/restaurants/sarti-bath-street.svg',
+  './assets/images/restaurants/sea-breezes.svg',
+  './assets/images/restaurants/the-butterfly-and-the-pig.svg',
+  './assets/images/restaurants/the-finnieston-bar-restaurant.svg',
+  './assets/images/restaurants/the-old-school-restaurant.svg',
+  './assets/images/restaurants/the-oyster-shed.svg',
+  './assets/images/restaurants/the-three-chimneys-at-talisker.svg',
+  './assets/images/restaurants/the-waterfront-cafe-bar.svg',
+  './assets/images/restaurants/ting-thai-caravan.svg'
 ];
 self.addEventListener('install', event => { event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(ASSETS))); self.skipWaiting(); });
 self.addEventListener('activate', event => { event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key !== CACHE).map(key => caches.delete(key))))); self.clients.claim(); });

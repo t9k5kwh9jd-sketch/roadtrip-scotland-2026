@@ -12,3 +12,9 @@
 
 ## 3.1
 - Ausgangsversion mit Reiseplan, Fotolinks und Ausgabenbuch.
+
+## 4.0.0-build.2
+- Added reusable sight, restaurant and Charlie card components.
+- Added local offline image assets for all photography spots and restaurants.
+- Rebuilt photography and food views with media-rich cards.
+- Extended the PWA cache for all Build 2 assets.
