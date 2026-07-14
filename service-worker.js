@@ -1,4 +1,4 @@
-const CACHE = 'roadtrip-scotland-2026-v3.0.0';
+const CACHE = 'roadtrip-scotland-2026-v4.0-build1';
 const ASSETS = [
   './',
   './index.html',
