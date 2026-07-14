@@ -22,6 +22,7 @@
       <button class="active" data-tab="start"><span>⌂</span><b>Home</b></button>
       <button data-tab="reise"><span>↗</span><b>Reise</b></button>
       <button data-tab="karte"><span>⌖</span><b>Karte</b></button>
+      <button data-tab="sehenswuerdigkeiten"><span>◆</span><b>Sehenswürdigkeiten</b></button>
       <button data-tab="fotografie"><span>◉</span><b>Foto</b></button>
       <button data-tab="essen"><span>♨</span><b>Essen</b></button>
       <button data-tab="tickets"><span>◇</span><b>Tickets</b></button>
@@ -29,7 +30,7 @@
       <button data-tab="packliste"><span>✓</span><b>Packen</b></button>
       <button data-tab="budget"><span>£</span><b>Budget</b></button>
     </nav>
-    <div class="sidebar-foot"><span class="status-dot"></span> Offline bereit<br><small>Version 4.0 · Build 1 Foundation</small></div>
+    <div class="sidebar-foot"><span class="status-dot"></span> Offline bereit<br><small>Version 4.0 · Build 2 Sights Fixed</small></div>
   </aside>
 
   <div class="workspace">
@@ -75,7 +76,7 @@
           <article class="panel quick-panel">
             <span class="overline">SCHNELLZUGRIFF</span>
             <div class="quick-grid">
-              <button onclick="showTab('fotografie')"><span>◉</span><b>Fotospots</b><small>Beste Zeiten</small></button>
+              <button onclick="showTab('sehenswuerdigkeiten')"><span>◆</span><b>Sehenswürdigkeiten</b><small>30 Ziele</small></button>
               <button onclick="showTab('essen')"><span>♨</span><b>Restaurants</b><small>Reservierungen</small></button>
               <button onclick="showTab('budget')"><span>£</span><b>Budget Pro</b><small>Ausgaben</small></button>
               <button onclick="showTab('packliste')"><span>✓</span><b>Packliste</b><small>Offline gespeichert</small></button>
@@ -97,6 +98,7 @@
       </section>
 <section id="reise" class="view"><div class="section-head"><div><h2>Die Reise</h2><p>Alle 15 Tage als elegante, aufklappbare Timeline.</p></div></div><input id="daySearch" class="search" placeholder="Ort, Aktivität oder Restaurant suchen …"><div id="dayList"></div></section>
 <section id="karte" class="view"><div class="section-head"><div><h2>Die Route</h2><p>Offline-Übersicht eurer Rundreise.</p></div></div><svg class="route" viewBox="0 0 800 500"><polyline class="route-line" points="544,398 255,214 90,87 149,83 710,143 694,187 384,417 518,399"/><g class="marker"><circle cx="544" cy="398" r="9"/><text x="558" y="402">Edinburgh</text></g><g class="marker"><circle cx="255" cy="214" r="9"/><text x="269" y="218">Fort William</text></g><g class="marker"><circle cx="90" cy="87" r="9"/><text x="104" y="91">Skye</text></g><g class="marker"><circle cx="149" cy="83" r="9"/><text x="163" y="87">Applecross</text></g><g class="marker"><circle cx="710" cy="143" r="9"/><text x="724" y="147">Aberdeen</text></g><g class="marker"><circle cx="694" cy="187" r="9"/><text x="708" y="191">Dunnottar</text></g><g class="marker"><circle cx="384" cy="417" r="9"/><text x="398" y="421">Glasgow</text></g><g class="marker"><circle cx="518" cy="399" r="9"/><text x="532" y="403">Flughafen</text></g></svg><div class="notice">Für Navigation unterwegs die Schottland-Karten vorab in Apple Karten oder Google Maps herunterladen.</div></section>
+<section id="sehenswuerdigkeiten" class="view"><div class="section-head"><div><h2>Sehenswürdigkeiten</h2><p>Alle ausgewählten Ziele mit Bild, Fototipp und Kartenlink.</p></div></div><input id="sightSearch" class="search" placeholder="Sehenswürdigkeit oder Region suchen …"><div id="sightList" class="grid"></div></section>
 <section id="fotografie" class="view"><div class="section-head"><div><h2>Fotografie</h2><p>Beste Zeiten, Motive und Charlies Bildideen.</p></div></div><div id="photoList" class="grid"></div></section>
 <section id="essen" class="view"><div class="section-head"><div><h2>Genussreise</h2><p>Restaurants, Spezialitäten und Reservierungen.</p></div></div><input id="foodSearch" class="search" placeholder="Restaurant oder Region suchen …"><div id="foodList" class="grid"></div></section>
 <section id="tickets" class="view"><div class="section-head"><div><h2>Tickets</h2><p>Buchungen und Reservierungen abhaken.</p></div></div><div class="card" id="ticketList"></div></section>
@@ -142,6 +144,9 @@
 </section></main><footer>Roadtrip Scotland 2026 · mit Charlie geplant · offline vorbereitet</footer>
   </div>
 </div>
-<script src="app.js" defer></script>
+<script src="data/trip-data.js"></script>
+<script src="data/image-manifest.js"></script>
+<script src="js/components/cards.js"></script>
+<script src="js/app.js" defer></script>
 </body>
 </html>
