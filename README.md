@@ -1,24 +1,26 @@
 # Roadtrip Scotland 2026
 
-**14 Tage Highlands • Skye • Edinburgh • Glasgow**
+## Version 4.0 – Build 1 Foundation
 
-Installierbare Offline-Reise-App als Progressive Web App.
+Dauerhaft gepflegte, installierbare Offline-Reise-App für vier Personen. Dieser Stand ist die technische GitHub-Basis für Sprint 2 und Version 4.0 Final.
 
-Die vollständige Schritt-für-Schritt-Anleitung befindet sich in:
+## Starten
+Die App über einen lokalen Webserver oder GitHub Pages öffnen. Direktes Öffnen per `file://` unterstützt Service Worker nicht vollständig.
 
-`INSTALLATION_PC_UND_IPHONE.md`
+## Struktur
+```text
+index.html
+css/                  Designsystem und UI
+js/                   Anwendungslogik
+js/components/        wiederverwendbare Komponenten
+data/                  zentrale Reisedaten
+assets/icons/          PWA-Icons
+assets/images/         Bilder für Sprint 2
+docs/                  Architekturhinweise
+service-worker.js      Offline-Cache
+manifest.webmanifest   PWA-Konfiguration
+CHANGELOG.md           Release-Historie
+```
 
-## Technische Bestandteile
-
-- `index.html` – App-Oberfläche
-- `styles.css` – Gestaltung
-- `app.js` – Reisedaten und Funktionen
-- `manifest.webmanifest` – Installationsinformationen
-- `service-worker.js` – Offline-Cache
-- `icons/` – App-Symbole
-- `.nojekyll` – verhindert eine unnötige Jekyll-Verarbeitung auf GitHub Pages
-
-
-## Version 3.1
-- Fotogalerie-Links für alle Fotospots
-- vollständiges lokales Ausgabenbuch mit Export, Sicherung und Wiederherstellung
+## Entwicklungsregel
+GitHub ist ab diesem Build die zentrale Quelle. Neue Builds werden auf diesem Verzeichnis aufgebaut; ZIP-Dateien dienen nur noch als Übergabe oder Release-Archiv.

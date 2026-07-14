@@ -1,0 +1,6 @@
+/* Design tokens: single source of truth for color, spacing and surfaces. */
+:root {
+  --app-version: "4.0 Build 1 Foundation";
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}

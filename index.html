@@ -9,14 +9,92 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Roadtrip Scotland">
   <link rel="manifest" href="manifest.webmanifest">
-  <link rel="apple-touch-icon" href="icons/icon-180.png">
-  <link rel="icon" href="icons/icon-192.png">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="apple-touch-icon" href="assets/icons/icon-180.png">
+  <link rel="icon" href="assets/icons/icon-192.png">
+  <link rel="stylesheet" href="css/app.css">
   <title>Roadtrip Scotland 2026</title>
 </head>
 <body>
-<header class="hero"><div class="hero-top"><span class="brand-mark">RS</span><span class="build-badge">V4.0 · BUILD 1</span></div><div class="hero-copy"><div class="eyebrow">Euer persönlicher Highland-Begleiter</div><h1>Scotland<br><em>2026</em></h1><p class="subtitle">Edinburgh · Highlands · Isle of Skye · Glasgow</p><div class="hero-meta"><span class="pill">06.–20. August</span><span class="pill">4 Reisende</span><span class="pill">15 Tage</span></div><div class="countdown" id="countdown"></div></div><div class="hero-orbit" aria-hidden="true"></div></header><nav class="dock" id="nav" aria-label="Hauptnavigation"><button class="active" data-tab="start"><span>⌂</span><b>Start</b></button><button data-tab="reise"><span>◫</span><b>Reise</b></button><button data-tab="karte"><span>⌖</span><b>Karte</b></button><button data-tab="fotografie"><span>◎</span><b>Foto</b></button><button data-tab="budget"><span>£</span><b>Budget</b></button><button class="more-tab" data-tab="essen"><span>•••</span><b>Mehr</b></button></nav><main>
-<section id="start" class="view active"><div class="dashboard-intro"><div><div class="label">Dashboard</div><h2>Fàilte gu Alba.</h2><p class="muted">Alles Wichtige für eure Reise – klar, offline und stressfrei.</p></div><button class="avatar" aria-label="Charlie">C</button></div><div class="hero-actions"><button class="hero-action primary" onclick="showTab('reise')"><span>🗺️</span><small>Tagespläne & Route</small><b>Reise öffnen</b></button><button class="hero-action" onclick="showTab('fotografie')"><span>📸</span><small>Licht, Motive, Settings</small><b>Fotografie</b></button><button class="hero-action" onclick="showTab('budget')"><span>£</span><small>Ausgaben & Überblick</small><b>Budget Pro</b></button></div><div class="dashboard-grid"><article class="card now-card"><div class="label">Aktueller Fokus</div><div class="metric" id="todayTitle">Vorfreude</div><p class="muted" id="todayText">Die App zeigt während der Reise automatisch den aktuellen Tagesplan.</p><button class="btn" onclick="showTab('reise')">Tagesplan öffnen →</button></article><article class="card route-card"><div class="label">Roadtrip</div><div class="route-stat"><strong>1.900</strong><span>km</span></div><p class="muted">Edinburgh → Highlands → Skye → Applecross → Aberdeen → Glasgow</p><div class="progress-track"><i></i></div></article><article class="card charlie-card"><div class="charlie-icon">C</div><div><div class="label">Charlies Empfehlung</div><h3>Wetter vor Tempo</h3><p class="muted">In den Highlands entscheidet die sichere, entspannte Route – nicht die Zahl der Programmpunkte.</p></div></article></div><div class="quick-links"><button onclick="showTab('essen')">🍽️ Essen</button><button onclick="showTab('unterkuenfte')">⌂ Unterkünfte</button><button onclick="showTab('tickets')">🎟️ Tickets</button><button onclick="showTab('packliste')">✓ Packliste</button></div><div class="notice"><b>Reise-Update:</b> Der 18. August ist konsolidiert: Aberdeen → Dunnottar Castle → Glasgow → Mietwagenrückgabe → entspannter Abend.</div></section>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-mark">S</div><div><strong>SCOTLAND</strong><span>Roadtrip 2026</span></div></div>
+    <nav class="dock" id="nav" aria-label="Hauptnavigation">
+      <button class="active" data-tab="start"><span>⌂</span><b>Home</b></button>
+      <button data-tab="reise"><span>↗</span><b>Reise</b></button>
+      <button data-tab="karte"><span>⌖</span><b>Karte</b></button>
+      <button data-tab="fotografie"><span>◉</span><b>Foto</b></button>
+      <button data-tab="essen"><span>♨</span><b>Essen</b></button>
+      <button data-tab="tickets"><span>◇</span><b>Tickets</b></button>
+      <button data-tab="unterkuenfte"><span>⌂</span><b>Hotels</b></button>
+      <button data-tab="packliste"><span>✓</span><b>Packen</b></button>
+      <button data-tab="budget"><span>£</span><b>Budget</b></button>
+    </nav>
+    <div class="sidebar-foot"><span class="status-dot"></span> Offline bereit<br><small>Version 4.0 · Build 1 Foundation</small></div>
+  </aside>
+
+  <div class="workspace">
+    <header class="topbar">
+      <div><span class="overline">ROADTRIP COMMAND CENTER</span><h1>Schottland 2026</h1></div>
+      <div class="topbar-actions"><span class="trip-chip">4 Reisende</span><span class="trip-chip">15 Tage</span></div>
+    </header>
+
+    <main>
+      <section id="start" class="view active dashboard-view">
+        <div class="dashboard-hero">
+          <div class="hero-copy">
+            <span class="edition">HIGHLANDER EDITION · V4</span>
+            <h2>Von Edinburgh<br>bis in die Highlands.</h2>
+            <p>Ein persönliches Reise-Cockpit für Route, Fotografie, Genuss und Budget – vollständig offline vorbereitet.</p>
+            <div class="hero-buttons">
+              <button class="btn primary" onclick="showTab('reise')">Reise öffnen <span>→</span></button>
+              <button class="btn glass" onclick="showTab('karte')">Route ansehen</button>
+            </div>
+          </div>
+          <div class="hero-status">
+            <span class="status-label">ABREISE</span>
+            <strong id="countdown">Roadtrip wird geladen</strong>
+            <div class="date-line">06.–20. August 2026</div>
+            <div class="progress-track"><i></i></div>
+            <small>Edinburgh · Highlands · Skye · Glasgow</small>
+          </div>
+        </div>
+
+        <div class="dashboard-grid">
+          <article class="panel next-panel">
+            <div class="panel-head"><div><span class="overline">REISESTATUS</span><h3 id="todayTitle">Vorfreude</h3></div><span class="panel-icon">↗</span></div>
+            <p id="todayText">Während der Reise erscheint hier automatisch der aktuelle Tagesplan.</p>
+            <div class="route-strip"><span>EDI</span><i></i><span>SKYE</span><i></i><span>GLA</span></div>
+            <button class="text-link" onclick="showTab('reise')">Alle 15 Reisetage ansehen →</button>
+          </article>
+
+          <article class="panel map-panel" onclick="showTab('karte')" role="button" tabindex="0">
+            <div class="map-art"><div class="map-route"></div><span class="map-pin one"></span><span class="map-pin two"></span><span class="map-pin three"></span></div>
+            <div class="panel-overlay"><span class="overline">ROUTE</span><h3>1.900 km Schottland</h3><p>8 Regionen · 1 große Rundreise</p></div>
+          </article>
+
+          <article class="panel quick-panel">
+            <span class="overline">SCHNELLZUGRIFF</span>
+            <div class="quick-grid">
+              <button onclick="showTab('fotografie')"><span>◉</span><b>Fotospots</b><small>Beste Zeiten</small></button>
+              <button onclick="showTab('essen')"><span>♨</span><b>Restaurants</b><small>Reservierungen</small></button>
+              <button onclick="showTab('budget')"><span>£</span><b>Budget Pro</b><small>Ausgaben</small></button>
+              <button onclick="showTab('packliste')"><span>✓</span><b>Packliste</b><small>Offline gespeichert</small></button>
+            </div>
+          </article>
+
+          <article class="panel charlie-panel">
+            <div class="charlie-avatar">C</div>
+            <div><span class="overline">CHARLIES TIPP</span><h3>Wetter vor Tempo.</h3><p>In den Highlands entscheidet die sichere, entspannte Route – nicht die Zahl der Programmpunkte.</p></div>
+          </article>
+
+          <article class="panel stats-panel">
+            <span class="overline">REISE AUF EINEN BLICK</span>
+            <div class="stats"><div><strong>15</strong><span>Tage</span></div><div><strong>8</strong><span>Regionen</span></div><div><strong>4</strong><span>Reisende</span></div><div><strong>∞</strong><span>Motive</span></div></div>
+          </article>
+        </div>
+
+        <div class="notice premium-notice"><span>!</span><div><b>Konsolidierter 18. August</b><p>Aberdeen → Dunnottar Castle → Glasgow → Gepäck → Mietwagenrückgabe → entspannter Abend.</p></div></div>
+      </section>
 <section id="reise" class="view"><div class="section-head"><div><h2>Die Reise</h2><p>Alle 15 Tage als elegante, aufklappbare Timeline.</p></div></div><input id="daySearch" class="search" placeholder="Ort, Aktivität oder Restaurant suchen …"><div id="dayList"></div></section>
 <section id="karte" class="view"><div class="section-head"><div><h2>Die Route</h2><p>Offline-Übersicht eurer Rundreise.</p></div></div><svg class="route" viewBox="0 0 800 500"><polyline class="route-line" points="544,398 255,214 90,87 149,83 710,143 694,187 384,417 518,399"/><g class="marker"><circle cx="544" cy="398" r="9"/><text x="558" y="402">Edinburgh</text></g><g class="marker"><circle cx="255" cy="214" r="9"/><text x="269" y="218">Fort William</text></g><g class="marker"><circle cx="90" cy="87" r="9"/><text x="104" y="91">Skye</text></g><g class="marker"><circle cx="149" cy="83" r="9"/><text x="163" y="87">Applecross</text></g><g class="marker"><circle cx="710" cy="143" r="9"/><text x="724" y="147">Aberdeen</text></g><g class="marker"><circle cx="694" cy="187" r="9"/><text x="708" y="191">Dunnottar</text></g><g class="marker"><circle cx="384" cy="417" r="9"/><text x="398" y="421">Glasgow</text></g><g class="marker"><circle cx="518" cy="399" r="9"/><text x="532" y="403">Flughafen</text></g></svg><div class="notice">Für Navigation unterwegs die Schottland-Karten vorab in Apple Karten oder Google Maps herunterladen.</div></section>
 <section id="fotografie" class="view"><div class="section-head"><div><h2>Fotografie</h2><p>Beste Zeiten, Motive und Charlies Bildideen.</p></div></div><div id="photoList" class="grid"></div></section>
@@ -62,6 +140,9 @@
 </div>
 <div class="notice"><b>Wichtig:</b> Ausgaben werden lokal auf dem jeweiligen Gerät gespeichert und nicht automatisch zwischen den vier iPhones synchronisiert.</div>
 </section></main><footer>Roadtrip Scotland 2026 · mit Charlie geplant · offline vorbereitet</footer>
-<script src="app.js" defer></script>
+  </div>
+</div>
+<script src="data/trip-data.js" defer></script>
+<script src="js/app.js" defer></script>
 </body>
 </html>

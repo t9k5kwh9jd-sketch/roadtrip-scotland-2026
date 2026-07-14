@@ -1,0 +1,4 @@
+/* Foundation layer. The legacy reset remains in pages.css until Sprint 2 migration. */
+html { scroll-behavior: smooth; }
+button, input, select, textarea { font: inherit; }
+img { max-width: 100%; display: block; }
