@@ -1,10 +1,7 @@
-# Changelog
-
-## 6.0.0 – Highlander Edition · Dreamteam Release
-- iPhone-Navigation mit Home, Reise, Hot Spot, Essen und Mehr
-- Apple-ähnliches Mehr-Menü für Tickets, Hotels, Tagebuch, Packen und Budget
-- bestehende Highlander Crew und farbcodiertes Reisetagebuch erhalten
-- finaler Cache- und Versionswechsel für GitHub Pages
+## 6.0.2 – iPhone Mehr-Menü Fix
+- Sichtbare mobile Mehr-Seite mit Tickets, Hotels, Tagebuch, Packen, Budget und Dreamteam.
+- Robuste 5-Punkt-Navigation auf dem iPhone.
+- Neuer PWA-Cache.
 
 ## 5.2.0 — Highlander Motto
 - „Es kann nur einen geben.“ dauerhaft unter „Willkommen, Highlander.“
