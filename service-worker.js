@@ -1,4 +1,4 @@
-const CACHE = 'roadtrip-scotland-v4-finalwe-20260715';
+const CACHE = 'roadtrip-scotland-v4-final-20260715-1';
 const ASSETS = [
   './', './index.html', './css/app.css', './css/variables.css', './css/base.css',
   './css/components.css', './css/pages.css', './data/trip-data.js', './js/app.js',

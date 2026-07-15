@@ -12,7 +12,7 @@
   <link rel="apple-touch-icon" href="assets/icons/icon-180.png">
   <link rel="icon" href="assets/icons/icon-192.png">
   <link rel="stylesheet" href="css/app.css">
-  <title>Roadtrip Scotland 2026 · FINALWE</title>
+  <title>Roadtrip Scotland 2026 · Version 4.0 FINAL</title>
 </head>
 <body>
 <div class="launch-screen" id="launchScreen" aria-hidden="true"><div class="launch-mark">🏴</div><strong>Roadtrip Scotland 2026</strong><span>Es kann nur einen geben.</span><small>Charlie lädt das Abenteuer …</small></div>
@@ -31,7 +31,7 @@
       <button data-tab="packliste"><span>✓</span><b>Packen</b></button>
       <button data-tab="budget"><span>£</span><b>Budget</b></button>
     </nav>
-    <div class="sidebar-foot"><span class="status-dot"></span> Offline bereit<br><small>Version 4.0 · FINALWE</small></div>
+    <div class="sidebar-foot"><span class="status-dot"></span> Offline bereit<br><small>Version 4.0 · FINAL</small></div>
   </aside>
 
   <div class="workspace">
@@ -44,7 +44,7 @@
       <section id="start" class="view active dashboard-view">
         <div class="dashboard-hero">
           <div class="hero-copy">
-            <span class="edition">HIGHLANDER EDITION · FINALWE</span>
+            <span class="edition">HIGHLANDER EDITION · VERSION 4.0 FINAL</span>
             <div class="hero-title-lockup"><strong>Roadtrip Scotland 2026</strong><span>Es kann nur einen geben.</span></div>
             <h2>Von Edinburgh<br>bis in die Highlands.</h2>
             <p>Ein persönliches Reise-Cockpit für Route, Fotografie, Genuss und Budget – vollständig offline vorbereitet.</p>
@@ -83,6 +83,11 @@
               <button onclick="showTab('budget')"><span>£</span><b>Budget Pro</b><small>Ausgaben</small></button>
               <button onclick="showTab('packliste')"><span>✓</span><b>Packliste</b><small>Offline gespeichert</small></button>
             </div>
+          </article>
+
+          <article class="panel daily-card weather-card">
+            <div class="daily-icon">☁</div>
+            <div><span class="overline">WETTER AM TAGESZIEL</span><h3 id="dailyWeather">Wetter wird geladen</h3><p id="dailyWeatherMeta">Online aktuell · offline mit letztem Stand</p></div>
           </article>
 
           <article class="panel daily-card song-card">

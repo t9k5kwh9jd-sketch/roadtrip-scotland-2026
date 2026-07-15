@@ -96,3 +96,31 @@ if ('serviceWorker' in navigator) {
   if(quote)quote.textContent='„'+item.quote+'“';
   if(by)by.textContent='— '+item.quoteBy;
 })();
+
+
+/* Version 4.0 FINAL: current weather for the active trip destination. */
+(function initDailyWeather(){
+  const target=document.getElementById('dailyWeather');
+  const meta=document.getElementById('dailyWeatherMeta');
+  if(!target||!meta)return;
+  const places={
+    '2026-08-06':[55.9533,-3.1883,'Edinburgh'],'2026-08-07':[55.9533,-3.1883,'Edinburgh'],'2026-08-08':[55.9533,-3.1883,'Edinburgh'],
+    '2026-08-09':[56.6826,-5.1023,'Glencoe'],'2026-08-10':[56.8198,-5.1052,'Glenfinnan'],'2026-08-11':[57.2736,-5.5164,'Dornie'],
+    '2026-08-12':[57.5066,-6.1745,'Isle of Skye'],'2026-08-13':[57.5066,-6.1745,'Isle of Skye'],'2026-08-14':[57.5066,-6.1745,'Isle of Skye'],
+    '2026-08-15':[57.4324,-5.8090,'Applecross'],'2026-08-16':[57.1497,-2.0943,'Aberdeen'],'2026-08-17':[57.1497,-2.0943,'Aberdeen'],
+    '2026-08-18':[55.8642,-4.2518,'Glasgow'],'2026-08-19':[55.8642,-4.2518,'Glasgow'],'2026-08-20':[55.8642,-4.2518,'Glasgow']
+  };
+  const now=new Date();
+  const iso=[now.getFullYear(),String(now.getMonth()+1).padStart(2,'0'),String(now.getDate()).padStart(2,'0')].join('-');
+  const selected=places[iso]||places['2026-08-06'];
+  const cacheKey='roadtrip26_weather_'+selected[2];
+  const codes={0:'Klar',1:'Überwiegend klar',2:'Teilweise bewölkt',3:'Bewölkt',45:'Nebel',48:'Reifnebel',51:'Leichter Nieselregen',53:'Nieselregen',55:'Starker Nieselregen',61:'Leichter Regen',63:'Regen',65:'Starker Regen',71:'Leichter Schnee',73:'Schnee',75:'Starker Schnee',80:'Regenschauer',81:'Kräftige Schauer',82:'Starke Schauer',95:'Gewitter'};
+  function show(data,offline){
+    target.textContent=`${Math.round(data.temperature_2m)} °C · ${codes[data.weather_code]||'Wechselhaft'}`;
+    meta.textContent=`${selected[2]} · Wind ${Math.round(data.wind_speed_10m)} km/h${offline?' · letzter gespeicherter Stand':' · aktuell'}`;
+  }
+  try{const saved=JSON.parse(localStorage.getItem(cacheKey)||'null');if(saved)show(saved,true)}catch{}
+  if(!navigator.onLine){if(!localStorage.getItem(cacheKey)){target.textContent='Offline · keine Wetterdaten gespeichert';meta.textContent=selected[2]+' · Reiseplan bleibt vollständig verfügbar'}return}
+  const url=`https://api.open-meteo.com/v1/forecast?latitude=${selected[0]}&longitude=${selected[1]}&current=temperature_2m,weather_code,wind_speed_10m&timezone=auto`;
+  fetch(url,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('weather');return r.json()}).then(j=>{if(!j.current)throw new Error('weather');localStorage.setItem(cacheKey,JSON.stringify(j.current));show(j.current,false)}).catch(()=>{if(!localStorage.getItem(cacheKey)){target.textContent='Wetter derzeit nicht erreichbar';meta.textContent=selected[2]+' · später automatisch erneut laden'}});
+})();
