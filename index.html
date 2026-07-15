@@ -31,6 +31,7 @@
 <button data-tab="unterkuenfte"><span>⌂</span><b>Hotels</b></button>
 <button data-tab="packliste"><span>✓</span><b>Packen</b></button>
 <button data-tab="budget"><span>£</span><b>Budget</b></button>
+<button data-tab="tagebuch"><span>▤</span><b>Tagebuch</b></button>
 </nav>
 <div class="sidebar-foot"><span class="status-dot"></span> Offline bereit<br/><small>Version 4.0 · FINAL</small></div>
 </aside>
@@ -78,6 +79,7 @@
 <button onclick="showTab('essen')"><span>♨</span><b>Restaurants</b><small>Reservierungen</small></button>
 <button onclick="showTab('budget')"><span>£</span><b>Budget Pro</b><small>Ausgaben</small></button>
 <button onclick="showTab('packliste')"><span>✓</span><b>Packliste</b><small>Offline gespeichert</small></button>
+<button onclick="showTab('tagebuch')"><span>▤</span><b>Tagebuch</b><small>Erinnerungen festhalten</small></button>
 </div>
 </article>
 <article class="panel daily-card song-card">
@@ -104,6 +106,50 @@
 <section class="view" id="tickets"><div class="section-head"><div><h2>Tickets</h2><p>Buchungen und Reservierungen abhaken.</p></div></div><div class="card" id="ticketList"></div></section>
 <section class="view" id="unterkuenfte"><div class="section-head"><div><h2>Unterkünfte</h2><p>Alle Übernachtungsorte auf einen Blick.</p></div></div><div class="grid" id="hotelList"></div></section>
 <section class="view" id="packliste"><div class="section-head"><div><h2>Packliste</h2><p>Deine Auswahl bleibt auf diesem Gerät gespeichert.</p></div></div><div class="card" id="packList"></div></section>
+
+<section class="view journal-view" id="tagebuch">
+  <div class="section-head"><div><h2>Reisetagebuch</h2><p>15 Tage, 15 Geschichten – vollständig offline auf diesem Gerät gespeichert.</p></div><div class="journal-save-state" id="journalSaveState">Bereit</div></div>
+  <div class="journal-layout">
+    <aside class="card journal-days-card">
+      <div class="label">REISETAG AUSWÄHLEN</div>
+      <select id="journalDaySelect" class="journal-day-select" aria-label="Reisetag auswählen"></select>
+      <div id="journalDayMeta" class="journal-day-meta"></div>
+      <div class="journal-prompt"><span>CHARLIE FRAGT …</span><p id="journalPrompt"></p></div>
+      <div class="journal-actions-vertical">
+        <button class="btn" id="journalExport" type="button">Tagebuch sichern</button>
+        <label class="btn secondary file-btn">Sicherung importieren<input id="journalImport" type="file" accept="application/json" hidden></label>
+        <button class="btn secondary" id="journalPrint" type="button">Diesen Tag drucken</button>
+      </div>
+    </aside>
+    <div class="journal-main">
+      <article class="card journal-overview">
+        <div><span class="overline">HEUTE UNTERWEGS</span><h3 id="journalTitle">Reisetag</h3><p id="journalSubtitle" class="muted"></p></div>
+        <div class="journal-auto-facts"><span id="journalSong">♪ Soundtrack</span><span id="journalExpenses">£ 0,00 heute</span></div>
+      </article>
+      <article class="card journal-editor-card">
+        <div class="journal-two-col">
+          <fieldset class="journal-fieldset"><legend>⭐ Bewertung des Tages</legend><div class="rating-picker" id="journalRating" role="group" aria-label="Bewertung"></div></fieldset>
+          <fieldset class="journal-fieldset"><legend>😊 Stimmung</legend><div class="mood-picker" id="journalMood" role="group" aria-label="Stimmung"></div></fieldset>
+        </div>
+        <label class="journal-field"><span>❤️ Highlight des Tages</span><input id="journalHighlight" placeholder="Der Moment, der bleiben soll …"></label>
+        <label class="journal-field"><span>✍️ Mein Tagebuch</span><textarea id="journalNotes" rows="9" placeholder="Heute haben wir …"></textarea></label>
+        <div class="journal-two-col">
+          <label class="journal-field"><span>🍽 Heute entdeckt</span><textarea id="journalDiscoveries" rows="4" placeholder="Restaurant, Ale, Begegnung, Geheimtipp …"></textarea></label>
+          <label class="journal-field"><span>🥃 Whisky des Tages</span><textarea id="journalWhisky" rows="4" placeholder="Name, Brennerei, Bewertung, Notiz …"></textarea></label>
+        </div>
+        <label class="journal-field"><span>✨ Der schönste Moment</span><textarea id="journalMoment" rows="3" placeholder="Welcher Moment war schöner als jedes Foto?"></textarea></label>
+        <fieldset class="journal-fieldset"><legend>📦 Kleine Erinnerungen</legend><div class="memory-grid" id="journalMemories"></div></fieldset>
+      </article>
+      <article class="card journal-photo-card">
+        <div class="section-subhead"><div><h3>📸 Lieblingsfoto</h3><p class="muted">Wird verkleinert und lokal auf diesem Gerät gespeichert.</p></div><label class="btn file-btn">Foto auswählen<input id="journalPhotoInput" type="file" accept="image/*" hidden></label></div>
+        <div class="journal-photo-empty" id="journalPhotoEmpty">Noch kein Foto ausgewählt.</div>
+        <img id="journalPhotoPreview" class="journal-photo-preview" alt="Lieblingsfoto des Reisetags" hidden>
+        <button class="mini-btn journal-photo-remove" id="journalPhotoRemove" type="button" hidden>Foto entfernen</button>
+      </article>
+      <div class="notice"><b>Datenschutz:</b> Tagebuch und Foto bleiben ausschließlich im Browser dieses Geräts. Nutze regelmäßig „Tagebuch sichern“, damit deine Erinnerungen nicht verloren gehen.</div>
+    </div>
+  </div>
+</section>
 <section class="view" id="budget">
 <div class="section-head"><div><h2>Ausgabenbuch</h2><p>Sämtliche Reiseausgaben erfassen, auswerten und sichern.</p></div></div>
 <div class="budget-dashboard">

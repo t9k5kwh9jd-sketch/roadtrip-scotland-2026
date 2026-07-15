@@ -109,3 +109,63 @@ if ('serviceWorker' in navigator) {
   async function loadWeather(){const now=new Date(),iso=[now.getFullYear(),String(now.getMonth()+1).padStart(2,'0'),String(now.getDate()).padStart(2,'0')].join('-');let d=DATA.days.find(x=>x.date===iso);if(!d){d=iso<'2026-08-06'?DATA.days[0]:DATA.days.at(-1)}const c=regionCoords[d.region]||regionCoords.Edinburgh;document.getElementById('weatherTitle').textContent=d.region+' · '+new Date(d.date+'T12:00:00').toLocaleDateString('de-DE',{weekday:'long',day:'numeric',month:'long'});const diff=Math.round((new Date(d.date+'T12:00:00')-now)/86400000);if(diff>15){document.getElementById('weatherText').textContent='Tagesgenaue Prognose wird ab 16 Tagen vorher automatisch geladen · Open‑Meteo';return}try{const url=`https://api.open-meteo.com/v1/forecast?latitude=${c[0]}&longitude=${c[1]}&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,sunrise,sunset&timezone=Europe%2FLondon&start_date=${d.date}&end_date=${d.date}`;const r=await fetch(url);if(!r.ok)throw 0;const x=await r.json(),a=x.daily;document.getElementById('weatherTemp').textContent=Math.round(a.temperature_2m_max[0])+'°';document.getElementById('weatherText').textContent=`${wmo[a.weather_code[0]]||'Wechselhaft'} · ${Math.round(a.temperature_2m_min[0])}–${Math.round(a.temperature_2m_max[0])} °C · Regen ${a.precipitation_probability_max[0]??'–'} % · Open‑Meteo`;}catch{document.getElementById('weatherText').textContent='Wetter derzeit offline · letzte Reisedaten bleiben verfügbar';}}
   loadWeather();
 })();
+
+
+/* FINAL Tagebuch: offline daily journal */
+(function initJournal(){
+  const select=document.getElementById('journalDaySelect'); if(!select)return;
+  const STORE='roadtrip26_journal_v1';
+  const prompts=[
+    'Was hat euch heute am meisten überrascht?',
+    'Welcher Moment war schöner als jedes Foto?',
+    'Was würdet ihr Freunden von heute unbedingt empfehlen?',
+    'Worüber musstet ihr heute gemeinsam lachen?',
+    'Welches Detail möchtest du niemals vergessen?',
+    'Welcher Ort hat heute eine besondere Stimmung ausgelöst?',
+    'Was hat das Wetter heute besser gemacht als geplant?',
+    'Welches Foto würdest du sofort groß ausdrucken?',
+    'Welche Begegnung bleibt von heute in Erinnerung?',
+    'Was war heute euer bester spontaner Entschluss?',
+    'Welcher Geschmack gehört für dich zu diesem Tag?',
+    'Wann warst du heute einfach nur glücklich?',
+    'Was würdest du bei diesem Reisetag genauso wieder machen?',
+    'Welcher Blick hat dich heute innehalten lassen?',
+    'Wenn ihr morgen noch einen Tag hättet – wohin würdet ihr zurückkehren?'
+  ];
+  const memoryLabels=['Souvenir gekauft','Whisky gekauft','Postkarte verschickt','Besonderen Menschen getroffen','Neuen Lieblingsort gefunden','Unerwarteten Umweg genossen'];
+  let currentDate=''; let saveTimer=null;
+  function all(){try{return JSON.parse(localStorage.getItem(STORE)||'{}')}catch{return{}}}
+  function write(data){localStorage.setItem(STORE,JSON.stringify(data))}
+  function blank(){return{rating:0,mood:'',highlight:'',notes:'',discoveries:'',whisky:'',moment:'',memories:[],photo:''}}
+  function item(date){return Object.assign(blank(),all()[date]||{})}
+  function dayByDate(date){return DATA.days.find(d=>d.date===date)||DATA.days[0]}
+  function setState(text,saving=false){const el=document.getElementById('journalSaveState');el.textContent=text;el.classList.toggle('saving',saving)}
+  function scheduleSave(){setState('Speichert …',true);clearTimeout(saveTimer);saveTimer=setTimeout(save,250)}
+  function save(){if(!currentDate)return;const data=all();data[currentDate]={
+    rating:Number(document.querySelector('#journalRating button.active')?.dataset.value||0),
+    mood:document.querySelector('#journalMood button.active')?.dataset.value||'',
+    highlight:document.getElementById('journalHighlight').value,
+    notes:document.getElementById('journalNotes').value,
+    discoveries:document.getElementById('journalDiscoveries').value,
+    whisky:document.getElementById('journalWhisky').value,
+    moment:document.getElementById('journalMoment').value,
+    memories:[...document.querySelectorAll('#journalMemories input:checked')].map(x=>x.value),
+    photo:document.getElementById('journalPhotoPreview').dataset.photo||''
+  };write(data);setState('Offline gespeichert')}
+  function renderPickers(entry){
+    document.getElementById('journalRating').innerHTML=[1,2,3,4,5].map(n=>`<button type="button" data-value="${n}" class="${entry.rating===n?'active':''}" aria-label="${n} Sterne">${'★'.repeat(n)}</button>`).join('');
+    document.getElementById('journalMood').innerHTML=['😀','😄','🙂','😌','😴'].map(m=>`<button type="button" data-value="${m}" class="${entry.mood===m?'active':''}" aria-label="Stimmung ${m}">${m}</button>`).join('');
+    document.querySelectorAll('#journalRating button,#journalMood button').forEach(b=>b.onclick=()=>{b.parentElement.querySelectorAll('button').forEach(x=>x.classList.remove('active'));b.classList.add('active');scheduleSave()});
+  }
+  function dayExpenses(date){return getExpenses().filter(e=>e.date===date).reduce((sum,e)=>sum+normalizeToGbp(e),0)}
+  function render(date){currentDate=date;const d=dayByDate(date),entry=item(date),i=DATA.days.findIndex(x=>x.date===date),p=parts(date);document.getElementById('journalTitle').textContent=`Tag ${i+1} · ${d.title}`;document.getElementById('journalSubtitle').textContent=`${new Date(date+'T12:00:00').toLocaleDateString('de-DE',{weekday:'long',day:'numeric',month:'long',year:'numeric'})} · ${d.region}`;document.getElementById('journalDayMeta').innerHTML=`<b>${esc(d.region)}</b><br>${esc(d.type)} · ${d.timeline.length} Programmpunkte`;document.getElementById('journalPrompt').textContent=prompts[i]||prompts[0];const extra=window.DAILY_EXTRAS?.days?.[date];document.getElementById('journalSong').textContent='♪ '+(extra?.song||d.soundtrack?.[0]||'Soundtrack des Tages');document.getElementById('journalExpenses').textContent=money(dayExpenses(date),'GBP')+' heute';renderPickers(entry);['Highlight','Notes','Discoveries','Whisky','Moment'].forEach(k=>document.getElementById('journal'+k).value=entry[k.toLowerCase()]||'');document.getElementById('journalMemories').innerHTML=memoryLabels.map(m=>`<label><input type="checkbox" value="${esc(m)}" ${entry.memories.includes(m)?'checked':''}>${esc(m)}</label>`).join('');document.querySelectorAll('#journalMemories input').forEach(x=>x.onchange=scheduleSave);const img=document.getElementById('journalPhotoPreview'),empty=document.getElementById('journalPhotoEmpty'),remove=document.getElementById('journalPhotoRemove');if(entry.photo){img.src=entry.photo;img.dataset.photo=entry.photo;img.hidden=false;empty.hidden=true;remove.hidden=false}else{img.removeAttribute('src');img.dataset.photo='';img.hidden=true;empty.hidden=false;remove.hidden=true}setState(entry.notes||entry.highlight||entry.photo?'Offline gespeichert':'Noch leer')}
+  select.innerHTML=DATA.days.map((d,i)=>`<option value="${d.date}">Tag ${i+1} · ${new Date(d.date+'T12:00:00').toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit'})} · ${esc(d.region)}</option>`).join('');
+  const today=new Date().toISOString().slice(0,10);select.value=DATA.days.some(d=>d.date===today)?today:DATA.days[0].date;select.onchange=()=>render(select.value);
+  ['journalHighlight','journalNotes','journalDiscoveries','journalWhisky','journalMoment'].forEach(id=>document.getElementById(id).addEventListener('input',scheduleSave));
+  document.getElementById('journalPhotoInput').onchange=ev=>{const f=ev.target.files?.[0];if(!f)return;if(!f.type.startsWith('image/')){alert('Bitte eine Bilddatei auswählen.');return}const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const max=1400,scale=Math.min(1,max/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*scale);c.height=Math.round(im.height*scale);c.getContext('2d').drawImage(im,0,0,c.width,c.height);const data=c.toDataURL('image/jpeg',.8),preview=document.getElementById('journalPhotoPreview');preview.src=data;preview.dataset.photo=data;preview.hidden=false;document.getElementById('journalPhotoEmpty').hidden=true;document.getElementById('journalPhotoRemove').hidden=false;scheduleSave()};im.src=r.result};r.readAsDataURL(f);ev.target.value=''};
+  document.getElementById('journalPhotoRemove').onclick=()=>{const p=document.getElementById('journalPhotoPreview');p.src='';p.dataset.photo='';p.hidden=true;document.getElementById('journalPhotoEmpty').hidden=false;document.getElementById('journalPhotoRemove').hidden=true;scheduleSave()};
+  document.getElementById('journalExport').onclick=()=>downloadFile('roadtrip-scotland-2026-tagebuch.json',JSON.stringify({version:1,exportedAt:new Date().toISOString(),journal:all()},null,2),'application/json');
+  document.getElementById('journalImport').onchange=ev=>{const f=ev.target.files?.[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const x=JSON.parse(r.result);if(!x.journal||typeof x.journal!=='object')throw 0;if(confirm('Tagebuch-Sicherung importieren und vorhandene Einträge ersetzen?')){write(x.journal);render(currentDate)}}catch{alert('Diese Sicherungsdatei ist ungültig.')}ev.target.value=''};r.readAsText(f)};
+  document.getElementById('journalPrint').onclick=()=>window.print();
+  render(select.value);
+})();

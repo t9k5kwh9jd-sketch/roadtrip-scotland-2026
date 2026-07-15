@@ -15,3 +15,11 @@
 - Interaktive Karte mit stabilen Hot-Spot-Markern und direkter Kartenfokussierung repariert.
 - Alle Hot-Spot-Karten mit eindeutigen Google-Maps-Koordinatenlinks versehen.
 - Neuer PWA-Cache zur sicheren Aktualisierung.
+
+
+## 4.0 FINAL – Tagebuch
+- Vollständig beschreibbares Offline-Reisetagebuch für alle 15 Tage
+- Bewertung, Stimmung, Highlight, Notizen, Entdeckungen und Whisky-Notiz
+- Lokales Lieblingsfoto pro Tag mit automatischer Verkleinerung
+- Tagesbezogene Charlie-Fragen, Soundtrack und Ausgabensumme
+- JSON-Sicherung, Import und Druckansicht
