@@ -9,12 +9,12 @@
 <meta content="yes" name="apple-mobile-web-app-capable"/>
 <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
 <meta content="Roadtrip Scotland" name="apple-mobile-web-app-title"/>
-<link href="manifest.webmanifest?v=4.0.1-journal" rel="manifest"/>
+<link href="manifest.webmanifest?v=4.0.2-dashboard" rel="manifest"/>
 <link href="assets/icons/icon-180.png" rel="apple-touch-icon"/>
 <link href="assets/icons/icon-192.png" rel="icon"/>
-<link href="css/app.css?v=4.0.1-journal" rel="stylesheet"/>
+<link href="css/app.css?v=4.0.2-dashboard" rel="stylesheet"/>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
-<title>Roadtrip Scotland 2026 · FINAL · Tagebuch</title>
+<title>Roadtrip Scotland 2026 · FINAL Dashboard</title>
 </head>
 <body>
 <div aria-hidden="true" class="launch-screen" id="launchScreen"><div class="launch-mark">🏴</div><strong>Roadtrip Scotland 2026</strong><span>Es kann nur einen geben.</span><small>Charlie lädt das Abenteuer …</small></div>
@@ -29,7 +29,7 @@
 <button data-tab="essen"><span>♨</span><b>Essen</b></button>
 <button data-tab="tickets"><span>◇</span><b>Tickets</b></button>
 <button data-tab="unterkuenfte"><span>⌂</span><b>Hotels</b></button>
-<button class="journal-nav" data-tab="tagebuch"><span>▤</span><b>Tagebuch</b><small>NEU</small></button>
+<button class="journal-nav" data-tab="tagebuch"><span>▤</span><b>Tagebuch</b></button>
 <button data-tab="packliste"><span>✓</span><b>Packen</b></button>
 <button data-tab="budget"><span>£</span><b>Budget</b></button>
 </nav>
@@ -42,67 +42,28 @@
 </header>
 <main>
 <section class="view active dashboard-view" id="start">
-<div class="dashboard-hero">
-<div class="hero-copy">
-<span class="edition">HIGHLANDER EDITION · FINAL</span>
-<div class="hero-title-lockup"><strong>Roadtrip Scotland 2026</strong><span>Es kann nur einen geben.</span></div>
-<h2>Willkommen,<br/>Highlander.</h2>
-<p>Dein persönliches Reise-Cockpit für Route, Fotografie, Genuss und Budget – vollständig offline vorbereitet.</p>
-<div class="hero-buttons">
-<button class="btn primary" onclick="showTab('reise')">Reise öffnen <span>→</span></button>
-<button class="btn glass" onclick="showTab('karte')">Route ansehen</button>
+<div class="dashboard-hero dashboard-hero-v2">
+  <div class="hero-copy hero-copy-v2">
+    <h2>Willkommen,<br/>Highlander.</h2>
+    <span class="hero-accent"></span>
+    <p>Dein persönliches Reise-Cockpit für Route, Fotografie, Genuss und Budget – vollständig offline vorbereitet.</p>
+    <div class="hero-buttons"><button class="btn primary" onclick="showTab('reise')">Reise öffnen <span>→</span></button><button class="btn glass" onclick="showTab('karte')">▧ Route ansehen</button></div>
+  </div>
+  <article class="hero-weather-card" aria-live="polite">
+    <span class="overline">WETTER AM TAGESORT</span>
+    <h3 id="weatherTitle">Wetter wird geladen</h3>
+    <div class="hero-weather-main"><span class="weather-symbol">⛅</span><strong id="weatherTemp">—</strong></div>
+    <p id="weatherText">Open‑Meteo · passend zu Datum und Region</p>
+  </article>
 </div>
-</div>
-<div class="hero-status">
-<span class="status-label">ABREISE</span>
-<strong id="countdown">Roadtrip wird geladen</strong>
-<div class="date-line">06.–20. August 2026</div>
-<div class="progress-track"><i></i></div>
-<small>Edinburgh · Highlands · Skye · Glasgow</small>
-</div>
-</div>
-<div class="dashboard-grid"><article class="panel weather-panel"><div><span class="overline">WETTER AM TAGESORT</span><h3 id="weatherTitle">Wetter wird geladen</h3><p id="weatherText">Open‑Meteo · passend zu Datum und Region</p></div><div class="weather-temp" id="weatherTemp">—</div></article>
-<article class="panel next-panel">
-<div class="panel-head"><div><span class="overline">REISESTATUS</span><h3 id="todayTitle">Vorfreude</h3></div><span class="panel-icon">↗</span></div>
-<p id="todayText">Während der Reise erscheint hier automatisch der aktuelle Tagesplan.</p>
-<div class="route-strip"><span>EDI</span><i></i><span>SKYE</span><i></i><span>GLA</span></div>
-<button class="text-link" onclick="showTab('reise')">Alle 15 Reisetage ansehen →</button>
-</article>
-<article class="panel map-panel" onclick="showTab('karte')" role="button" tabindex="0">
-<div class="map-art"><div class="map-route"></div><span class="map-pin one"></span><span class="map-pin two"></span><span class="map-pin three"></span></div>
-<div class="panel-overlay"><span class="overline">ROUTE</span><h3>1.900 km Schottland</h3><p>8 Regionen · 1 große Rundreise</p></div>
-</article>
-<article class="panel quick-panel">
-<span class="overline">SCHNELLZUGRIFF</span>
-<div class="quick-grid">
-<button onclick="showTab('sehenswuerdigkeiten')"><span>◆</span><b>Hot Spot</b><small>30 Ziele · individuell geplant</small></button>
-<button onclick="showTab('essen')"><span>♨</span><b>Restaurants</b><small>Reservierungen</small></button>
-<button onclick="showTab('budget')"><span>£</span><b>Budget Pro</b><small>Ausgaben</small></button>
-<button onclick="showTab('packliste')"><span>✓</span><b>Packliste</b><small>Offline gespeichert</small></button>
-<button onclick="showTab('tagebuch')"><span>▤</span><b>Tagebuch</b><small>Erinnerungen festhalten</small></button>
-</div>
-</article>
-<article class="panel journal-promo" onclick="showTab('tagebuch')" role="button" tabindex="0">
-  <div class="journal-promo-icon">▤</div>
-  <div><span class="overline">NEU · REISETAGEBUCH</span><h3>15 Tage. 15 Geschichten.</h3><p>Notizen, Stimmung, Tageshighlight, Whisky-Momente und Lieblingsfoto – alles offline gespeichert.</p></div>
-  <span class="journal-promo-arrow">→</span>
-</article>
-<article class="panel daily-card song-card">
-<div class="daily-icon">♪</div>
-<div><span class="overline">LIED DES TAGES</span><h3 id="dailySong">Soundtrack wird geladen</h3><p id="dailySongMood">Passend zu Route und Stimmung.</p></div>
-</article>
-<article class="panel daily-card quote-card">
-<div class="daily-icon">“</div>
-<div><span class="overline">SPRUCH DES TAGES</span><h3 id="dailyQuote">Der nächste gute Gedanke ist schon unterwegs.</h3><p id="dailyQuoteBy">— Charlie</p></div>
-</article>
-<article class="panel charlie-panel">
-<div class="charlie-avatar">C</div>
-<div><span class="overline">CHARLIES TIPP</span><h3>Wetter vor Tempo.</h3><p>In den Highlands entscheidet die sichere, entspannte Route – nicht die Zahl der Programmpunkte.</p></div>
-</article>
-<article class="panel stats-panel">
-<span class="overline">REISE AUF EINEN BLICK</span>
-<div class="stats"><div><strong>15</strong><span>Tage</span></div><div><strong>8</strong><span>Regionen</span></div><div><strong>4</strong><span>Reisende</span></div><div><strong>∞</strong><span>Motive</span></div></div>
-</article>
+<div class="dashboard-v2-grid">
+  <article class="panel countdown-card"><span class="overline">ABREISE</span><div class="countdown-layout"><div><h3 id="countdown">Roadtrip wird geladen</h3><p>06.–20. August 2026</p></div><div class="countdown-ring"><b>22</b><small>TAGE</small></div></div><div class="route-cities">Edinburgh · Highlands · Skye · Glasgow</div></article>
+  <article class="panel daily-card song-card"><div class="daily-icon">♪</div><div><span class="overline">LIED DES TAGES</span><h3 id="dailySong">Soundtrack wird geladen</h3><p id="dailySongMood">Passend zu Route und Stimmung.</p></div></article>
+  <article class="panel daily-card quote-card"><div><span class="overline">SPRUCH DES TAGES</span><h3 id="dailyQuote">Der nächste gute Gedanke ist schon unterwegs.</h3><p id="dailyQuoteBy">— Charlie</p></div></article>
+  <article class="panel charlie-panel"><div class="daily-icon">💡</div><div><span class="overline">CHARLIE-TIPP</span><h3>Schottland belohnt Geduld.</h3><p>Plane Fotostopps nicht nur nach Uhrzeit, sondern nach Licht, Ruhe und Stimmung.</p></div></article>
+  <article class="panel journal-promo journal-promo-v2" onclick="showTab('tagebuch')" role="button" tabindex="0"><div class="journal-promo-icon">▤</div><div><span class="overline">REISETAGEBUCH</span><h3>15 Tage. 15 Geschichten.</h3><p>Halte besondere Momente, Eindrücke und Erinnerungen deiner Reise fest.</p><button class="btn glass" type="button">Tagebuch öffnen →</button></div></article>
+  <article class="panel next-panel next-panel-v2"><span class="overline">NÄCHSTER REISETAG</span><h3 id="todayTitle">Vorfreude</h3><p id="todayText">Während der Reise erscheint hier automatisch der aktuelle Tagesplan.</p><div class="next-times"><span><b>09:00</b> Calton Hill</span><span><b>11:30</b> Edinburgh Castle</span><span><b>15:00</b> Royal Mile</span><span><b>17:00</b> Dean Village</span></div><button class="btn glass" onclick="showTab('reise')">Tagesplan öffnen</button></article>
+  <article class="panel map-panel map-panel-v2" onclick="showTab('karte')" role="button" tabindex="0"><div class="map-art"><div class="map-route"></div><span class="map-pin one"></span><span class="map-pin two"></span><span class="map-pin three"></span></div><div class="panel-overlay"><span class="overline">KARTE</span><h3>Interaktive Route</h3><p>Hot Spots und Restaurants</p><button class="btn glass">Karte öffnen ↗</button></div></article>
 </div>
 </section>
 <section class="view" id="reise"><div class="section-head"><div><h2>Die Reise</h2><p>Alle 15 Tage als elegante, aufklappbare Timeline.</p></div></div><input class="search" id="daySearch" placeholder="Ort, Aktivität oder Restaurant suchen …"/><div id="dayList"></div></section>
@@ -196,10 +157,10 @@
 </div>
 </div>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
-<script src="data/trip-data.js?v=4.0.1-journal"></script>
-<script src="data/image-manifest.js?v=4.0.1-journal"></script>
-<script src="data/daily-extras.js?v=4.0.1-journal"></script>
-<script src="js/components/cards.js?v=4.0.1-journal"></script>
-<script defer="" src="js/app.js?v=4.0.1-journal"></script>
+<script src="data/trip-data.js?v=4.0.2-dashboard"></script>
+<script src="data/image-manifest.js?v=4.0.2-dashboard"></script>
+<script src="data/daily-extras.js?v=4.0.2-dashboard"></script>
+<script src="js/components/cards.js?v=4.0.2-dashboard"></script>
+<script defer="" src="js/app.js?v=4.0.2-dashboard"></script>
 </body>
 </html>

@@ -32,3 +32,11 @@
 - Lokales Lieblingsfoto pro Tag mit automatischer Verkleinerung
 - Tagesbezogene Charlie-Fragen, Soundtrack und Ausgabensumme
 - JSON-Sicherung, Import und Druckansicht
+
+## 4.0.2 FINAL Dashboard
+- Dashboard gemäß freigegebenem Bild-1-Design neu aufgebaut
+- verschwommenes Highlander-Hintergrundwort entfernt
+- Wetter in den Hero integriert
+- redundante Wetterkachel entfernt
+- NEU-Badge am Tagebuch entfernt
+- Tagebuch weiterhin vollständig beschreibbar und offline gespeichert
