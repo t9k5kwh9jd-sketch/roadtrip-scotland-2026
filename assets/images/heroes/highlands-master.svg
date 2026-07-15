@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1350" viewBox="0 0 2400 1350" role="img" aria-labelledby="t d">
+<title id="t">Atmosphärische Highlands</title><desc id="d">Vektorillustration einer schottischen Berglandschaft im Morgenlicht.</desc>
+<defs>
+<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#203f3b"/><stop offset=".5" stop-color="#54746d"/><stop offset="1" stop-color="#d3b27f"/></linearGradient>
+<radialGradient id="sun"><stop stop-color="#fff4cc" stop-opacity=".95"/><stop offset="1" stop-color="#e6bd72" stop-opacity="0"/></radialGradient>
+<linearGradient id="m1" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#39554a"/><stop offset="1" stop-color="#14251f"/></linearGradient>
+<linearGradient id="m2" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#274239"/><stop offset="1" stop-color="#0a1713"/></linearGradient>
+<linearGradient id="lake" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#6f8e86"/><stop offset="1" stop-color="#11251f"/></linearGradient>
+<filter id="blur"><feGaussianBlur stdDeviation="32"/></filter>
+</defs>
+<rect width="2400" height="1350" fill="url(#sky)"/>
+<ellipse cx="1810" cy="310" rx="330" ry="290" fill="url(#sun)"/>
+<g opacity=".18" filter="url(#blur)" fill="#fff"><ellipse cx="520" cy="270" rx="520" ry="95"/><ellipse cx="1510" cy="190" rx="620" ry="80"/></g>
+<path d="M0 790 280 530 520 690 830 350 1120 700 1430 430 1710 670 1990 390 2400 720 2400 1350 0 1350Z" fill="url(#m1)"/>
+<path d="M0 900 330 670 620 840 970 560 1310 860 1600 600 1910 820 2180 610 2400 770 2400 1350 0 1350Z" fill="url(#m2)"/>
+<path d="M0 920 C420 850 700 980 1080 900 S1830 790 2400 930 L2400 1350 0 1350Z" fill="url(#lake)"/>
+<path d="M0 1020 C500 950 840 1080 1250 980 S1970 900 2400 1050" fill="none" stroke="#dfc18f" stroke-opacity=".22" stroke-width="8"/>
+<g fill="#0b1814"><path d="M0 1120 Q210 1020 410 1120 T810 1120 T1210 1120 T1610 1120 T2010 1120 T2410 1120 V1350 H0Z"/></g>
+<g fill="#152c24" opacity=".9"><path d="M160 1090l45-150 45 150zM240 1100l52-180 52 180zM2020 1095l50-175 50 175zM2110 1105l58-205 58 205z"/></g>
+<rect width="2400" height="1350" fill="url(#fade)" opacity="0"/>
+</svg>

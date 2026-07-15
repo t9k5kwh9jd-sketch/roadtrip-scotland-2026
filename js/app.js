@@ -44,3 +44,55 @@ if ('serviceWorker' in navigator) {
   });
 }
 
+
+/* Verified sights fallback + interactive offline map */
+(function(){
+  const sights=(window.TRIP_DATA&&window.TRIP_DATA.photo)||[];
+  const manifest=(window.IMAGE_MANIFEST&&window.IMAGE_MANIFEST.sights)||{};
+  const list=document.getElementById('sightList');
+  const search=document.getElementById('sightSearch');
+  if(search&&list){search.addEventListener('input',()=>{const q=search.value.trim().toLowerCase();list.querySelectorAll('[data-search]').forEach(card=>card.hidden=q&&!card.dataset.search.includes(q));});}
+  const canvas=document.getElementById('mapCanvas'),viewport=document.getElementById('mapViewport'),detail=document.getElementById('mapDetail');
+  if(!canvas||!viewport||!detail)return;
+  let scale=1,tx=0,ty=0,drag=false,sx=0,sy=0;
+  const apply=()=>canvas.style.transform=`translate(${tx}px,${ty}px) scale(${scale})`;
+  function select(i){const s=sights[i];if(!s)return;document.querySelectorAll('.map-marker').forEach(x=>x.classList.toggle('active',Number(x.dataset.index)===i));detail.innerHTML=`<div class="map-detail__content"><img src="${manifest[s.place]||''}" alt=""><div><div class="label">${s.region}</div><h3>${s.place}</h3><p>${s.tip||''}</p><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(s.place+' Scotland')}">📍 Navigation öffnen</a></div></div>`;}
+  window.focusSightOnMap=function(i){showTab('karte');setTimeout(()=>select(i),120)};
+  document.querySelectorAll('.map-marker').forEach(m=>m.addEventListener('click',e=>{e.stopPropagation();select(Number(m.dataset.index));}));
+  document.querySelectorAll('.map-filter').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.map-filter').forEach(x=>x.classList.remove('active'));b.classList.add('active');const r=b.dataset.region;document.querySelectorAll('.map-marker').forEach(m=>m.classList.toggle('is-hidden',r!=='Alle'&&m.dataset.region!==r));}));
+  document.getElementById('mapZoomIn').onclick=()=>{scale=Math.min(2.2,scale+.2);apply()};
+  document.getElementById('mapZoomOut').onclick=()=>{scale=Math.max(.65,scale-.2);apply()};
+  document.getElementById('mapReset').onclick=()=>{scale=1;tx=0;ty=0;apply()};
+  viewport.addEventListener('pointerdown',e=>{drag=true;sx=e.clientX-tx;sy=e.clientY-ty;viewport.setPointerCapture(e.pointerId)});
+  viewport.addEventListener('pointermove',e=>{if(!drag)return;tx=e.clientX-sx;ty=e.clientY-sy;apply()});
+  viewport.addEventListener('pointerup',()=>drag=false);viewport.addEventListener('pointercancel',()=>drag=false);
+  apply();
+})();
+
+/* Build 2.1: date-aware soundtrack, daily quote and launch identity */
+(function initDailyIdentity(){
+  const launch=document.getElementById('launchScreen');
+  if(launch){
+    const alreadySeen=sessionStorage.getItem('scotland-launch-seen');
+    if(alreadySeen){ launch.remove(); }
+    else {
+      sessionStorage.setItem('scotland-launch-seen','1');
+      window.setTimeout(()=>launch.classList.add('is-hidden'),1450);
+      window.setTimeout(()=>launch.remove(),2200);
+    }
+  }
+  const extras=window.DAILY_EXTRAS;
+  if(!extras)return;
+  const now=new Date();
+  const localIso=[now.getFullYear(),String(now.getMonth()+1).padStart(2,'0'),String(now.getDate()).padStart(2,'0')].join('-');
+  const tripStart='2026-08-06',tripEnd='2026-08-20';
+  const item=extras.days[localIso]||(localIso<tripStart?extras.preTrip:extras.postTrip);
+  const song=document.getElementById('dailySong');
+  const mood=document.getElementById('dailySongMood');
+  const quote=document.getElementById('dailyQuote');
+  const by=document.getElementById('dailyQuoteBy');
+  if(song)song.textContent=item.song;
+  if(mood)mood.textContent=item.mood;
+  if(quote)quote.textContent='„'+item.quote+'“';
+  if(by)by.textContent='— '+item.quoteBy;
+})();
