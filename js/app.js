@@ -136,12 +136,13 @@ if ('serviceWorker' in navigator) {
   let currentDate=''; let saveTimer=null;
   function all(){try{return JSON.parse(localStorage.getItem(STORE)||'{}')}catch{return{}}}
   function write(data){localStorage.setItem(STORE,JSON.stringify(data))}
-  function blank(){return{rating:0,mood:'',highlight:'',notes:'',discoveries:'',whisky:'',moment:'',memories:[],photo:''}}
+  function blank(){return{author:'stefan',rating:0,mood:'',highlight:'',notes:'',discoveries:'',whisky:'',moment:'',memories:[],photo:''}}
   function item(date){return Object.assign(blank(),all()[date]||{})}
   function dayByDate(date){return DATA.days.find(d=>d.date===date)||DATA.days[0]}
   function setState(text,saving=false){const el=document.getElementById('journalSaveState');el.textContent=text;el.classList.toggle('saving',saving)}
   function scheduleSave(){setState('Speichert …',true);clearTimeout(saveTimer);saveTimer=setTimeout(save,250)}
   function save(){if(!currentDate)return;const data=all();data[currentDate]={
+    author:document.querySelector('#journalAuthorPicker button.active')?.dataset.author||'stefan',
     rating:Number(document.querySelector('#journalRating button.active')?.dataset.value||0),
     mood:document.querySelector('#journalMood button.active')?.dataset.value||'',
     highlight:document.getElementById('journalHighlight').value,
@@ -153,6 +154,10 @@ if ('serviceWorker' in navigator) {
     photo:document.getElementById('journalPhotoPreview').dataset.photo||''
   };write(data);setState('Offline gespeichert')}
   function renderPickers(entry){
+    const authors={stefan:{name:'Stefan',color:'#d85858'},christine:{name:'Christine',color:'#4c8fe8'},markus:{name:'Markus',color:'#c8ab7b'},meggi:{name:'Meggi',color:'#58b878'}};
+    document.querySelectorAll('#journalAuthorPicker button').forEach(b=>{b.classList.toggle('active',b.dataset.author===(entry.author||'stefan'));b.onclick=()=>{document.querySelectorAll('#journalAuthorPicker button').forEach(x=>x.classList.remove('active'));b.classList.add('active');applyAuthor(b.dataset.author);scheduleSave()}});
+    function applyAuthor(author){const a=authors[author]||authors.stefan;const box=document.getElementById('journalOverview');box.dataset.author=author;box.style.setProperty('--journal-author-color',a.color);}
+    applyAuthor(entry.author||'stefan');
     document.getElementById('journalRating').innerHTML=[1,2,3,4,5].map(n=>`<button type="button" data-value="${n}" class="${entry.rating===n?'active':''}" aria-label="${n} Sterne">${'★'.repeat(n)}</button>`).join('');
     document.getElementById('journalMood').innerHTML=['😀','😄','🙂','😌','😴'].map(m=>`<button type="button" data-value="${m}" class="${entry.mood===m?'active':''}" aria-label="Stimmung ${m}">${m}</button>`).join('');
     document.querySelectorAll('#journalRating button,#journalMood button').forEach(b=>b.onclick=()=>{b.parentElement.querySelectorAll('button').forEach(x=>x.classList.remove('active'));b.classList.add('active');scheduleSave()});

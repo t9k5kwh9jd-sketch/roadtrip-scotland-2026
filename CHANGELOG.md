@@ -52,3 +52,10 @@
 - konsistentes dunkles Highlander-Design mit Grün- und Goldakzenten
 - responsive iPhone-Navigation
 - Tagebuch, Hot Spots, Karte, Budget und Reiseinhalte bleiben erhalten
+
+## 5.3.1 – Highlander Dreamteam Final
+- Crew-Karte exakt auf Stefan, Christine, Markus und Meggi angepasst
+- Abschlusszeile „Dreamteam“ ergänzt
+- Tagebuch-Personenauswahl sichtbar und funktionsfähig gemacht
+- Verfasserfarben: Stefan rot, Christine blau, Markus braun/beige, Meggi grün
+- PWA-Cache und Versionskennung aktualisiert

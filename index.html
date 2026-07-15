@@ -9,14 +9,14 @@
 <meta content="yes" name="apple-mobile-web-app-capable"/>
 <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
 <meta content="Roadtrip Scotland" name="apple-mobile-web-app-title"/>
-<link href="manifest.webmanifest?v=4.0.3-final-fixed" rel="manifest"/>
+<link href="manifest.webmanifest?v=5.3.1-dreamteam" rel="manifest"/>
 <link href="assets/icons/icon-180.png" rel="apple-touch-icon"/>
 <link href="assets/icons/icon-192.png" rel="icon"/>
-<link href="css/app.css?v=5.0-highlander" rel="stylesheet"/>
+<link href="css/app.css?v=5.3.1-dreamteam" rel="stylesheet"/>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
 <title>Roadtrip Scotland 2026 · Highlander Edition</title>
-<meta name="build" content="5.0.0-HIGHLANDER"/>
-<link href="css/highlander.css?v=5.0-highlander" rel="stylesheet"/>
+<meta name="build" content="5.3.1-HIGHLANDER-DREAMTEAM"/>
+<link href="css/highlander.css?v=5.3.1-dreamteam" rel="stylesheet"/>
 </head>
 <body>
 <div aria-hidden="true" class="launch-screen" id="launchScreen"><div class="launch-mark">🏴</div><strong>Roadtrip Scotland 2026</strong><span>Es kann nur einen geben.</span><small>Charlie lädt das Abenteuer …</small></div>
@@ -35,7 +35,7 @@
 <button data-tab="packliste"><span>✓</span><b>Packen</b></button>
 <button data-tab="budget"><span>£</span><b>Budget</b></button>
 </nav>
-<div class="sidebar-foot"><span class="status-dot"></span> Offline bereit<br/><small>Version 5.2<br/>Highlander Edition</small></div>
+<div class="sidebar-foot"><span class="status-dot"></span> Offline bereit<br/><small>Version 5.3.1<br/>Highlander Edition</small></div>
 </aside>
 <div class="workspace">
 <header class="topbar">
@@ -64,6 +64,16 @@
   <article class="panel daily-card song-card"><div class="daily-icon">♪</div><div><span class="overline">LIED DES TAGES</span><h3 id="dailySong">Soundtrack wird geladen</h3><p id="dailySongMood">Passend zu Route und Stimmung.</p></div></article>
   <article class="panel daily-card quote-card"><div><span class="overline">SPRUCH DES TAGES</span><h3 id="dailyQuote">Der nächste gute Gedanke ist schon unterwegs.</h3><p id="dailyQuoteBy">— Charlie</p></div></article>
   <article class="panel charlie-panel"><div class="daily-icon">💡</div><div><span class="overline">CHARLIE-TIPP</span><h3>Schottland belohnt Geduld.</h3><p>Plane Fotostopps nicht nur nach Uhrzeit, sondern nach Licht, Ruhe und Stimmung.</p></div></article>
+  <article class="panel crew-panel" aria-label="Highlander Crew">
+    <div class="crew-head"><div><span class="overline">👥 HIGHLANDER CREW</span></div></div>
+    <div class="crew-grid">
+      <div class="crew-member crew-stefan"><span>📷</span><b>Stefan</b></div>
+      <div class="crew-member crew-christine"><span>🧬</span><b>Christine</b></div>
+      <div class="crew-member crew-markus"><span>⚽</span><b>Markus</b></div>
+      <div class="crew-member crew-meggi"><span>🐆</span><b>Meggi</b></div>
+    </div>
+    <p class="crew-tagline">Dreamteam</p>
+  </article>
   <article class="panel journal-promo journal-promo-v2" onclick="showTab('tagebuch')" role="button" tabindex="0"><div class="journal-promo-icon">▤</div><div><span class="overline">REISETAGEBUCH</span><h3>15 Tage. 15 Geschichten.</h3><p>Halte besondere Momente, Eindrücke und Erinnerungen deiner Reise fest.</p><button class="btn glass" type="button">Tagebuch öffnen →</button></div></article>
   <article class="panel next-panel next-panel-v2"><span class="overline">NÄCHSTER REISETAG</span><h3 id="todayTitle">Vorfreude</h3><p id="todayText">Während der Reise erscheint hier automatisch der aktuelle Tagesplan.</p><div class="next-times"><span><b>09:00</b> Calton Hill</span><span><b>11:30</b> Edinburgh Castle</span><span><b>15:00</b> Royal Mile</span><span><b>17:00</b> Dean Village</span></div><button class="btn glass" onclick="showTab('reise')">Tagesplan öffnen</button></article>
   <article class="panel map-panel map-panel-v2" onclick="showTab('karte')" role="button" tabindex="0"><div class="map-art"><div class="map-route"></div><span class="map-pin one"></span><span class="map-pin two"></span><span class="map-pin three"></span></div><div class="panel-overlay"><span class="overline">KARTE</span><h3>Interaktive Route</h3><p>Hot Spots und Restaurants</p><button class="btn glass">Karte öffnen ↗</button></div></article>
@@ -96,6 +106,14 @@
         <div class="journal-auto-facts"><span id="journalSong">♪ Soundtrack</span><span id="journalExpenses">£ 0,00 heute</span></div>
       </article>
       <article class="card journal-editor-card">
+        <fieldset class="journal-fieldset journal-author-fieldset"><legend>👥 Wer schreibt?</legend>
+          <div class="journal-author-picker" id="journalAuthorPicker" role="group" aria-label="Verfasser auswählen">
+            <button type="button" data-author="stefan"><span>📷</span> Stefan</button>
+            <button type="button" data-author="christine"><span>🧬</span> Christine</button>
+            <button type="button" data-author="markus"><span>⚽</span> Markus</button>
+            <button type="button" data-author="meggi"><span>🐆</span> Meggi</button>
+          </div>
+        </fieldset>
         <div class="journal-two-col">
           <fieldset class="journal-fieldset"><legend>⭐ Bewertung des Tages</legend><div class="rating-picker" id="journalRating" role="group" aria-label="Bewertung"></div></fieldset>
           <fieldset class="journal-fieldset"><legend>😊 Stimmung</legend><div class="mood-picker" id="journalMood" role="group" aria-label="Stimmung"></div></fieldset>
@@ -160,10 +178,10 @@
 </div>
 </div>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
-<script src="data/trip-data.js?v=4.0.3-final-fixed"></script>
-<script src="data/image-manifest.js?v=4.0.3-final-fixed"></script>
-<script src="data/daily-extras.js?v=4.0.3-final-fixed"></script>
-<script src="js/components/cards.js?v=4.0.3-final-fixed"></script>
-<script defer="" src="js/app.js?v=4.0.3-final-fixed"></script>
+<script src="data/trip-data.js?v=5.3.1-dreamteam"></script>
+<script src="data/image-manifest.js?v=5.3.1-dreamteam"></script>
+<script src="data/daily-extras.js?v=5.3.1-dreamteam"></script>
+<script src="js/components/cards.js?v=5.3.1-dreamteam"></script>
+<script defer="" src="js/app.js?v=5.3.1-dreamteam"></script>
 </body>
 </html>
