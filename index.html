@@ -9,12 +9,14 @@
 <meta content="yes" name="apple-mobile-web-app-capable"/>
 <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
 <meta content="Roadtrip Scotland" name="apple-mobile-web-app-title"/>
-<link href="manifest.webmanifest?v=4.0.2-dashboard" rel="manifest"/>
+<link href="manifest.webmanifest?v=4.0.3-final-fixed" rel="manifest"/>
 <link href="assets/icons/icon-180.png" rel="apple-touch-icon"/>
 <link href="assets/icons/icon-192.png" rel="icon"/>
-<link href="css/app.css?v=4.0.2-dashboard" rel="stylesheet"/>
+<link href="css/app.css?v=5.0-highlander" rel="stylesheet"/>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
-<title>Roadtrip Scotland 2026 · FINAL Dashboard</title>
+<title>Roadtrip Scotland 2026 · Highlander Edition</title>
+<meta name="build" content="5.0.0-HIGHLANDER"/>
+<link href="css/highlander.css?v=5.0-highlander" rel="stylesheet"/>
 </head>
 <body>
 <div aria-hidden="true" class="launch-screen" id="launchScreen"><div class="launch-mark">🏴</div><strong>Roadtrip Scotland 2026</strong><span>Es kann nur einen geben.</span><small>Charlie lädt das Abenteuer …</small></div>
@@ -33,7 +35,7 @@
 <button data-tab="packliste"><span>✓</span><b>Packen</b></button>
 <button data-tab="budget"><span>£</span><b>Budget</b></button>
 </nav>
-<div class="sidebar-foot"><span class="status-dot"></span> Offline bereit<br/><small>Version 4.0 · FINAL</small></div>
+<div class="sidebar-foot"><span class="status-dot"></span> Offline bereit<br/><small>Version 5.0 · HIGHLANDER</small></div>
 </aside>
 <div class="workspace">
 <header class="topbar">
@@ -53,7 +55,7 @@
     <span class="overline">WETTER AM TAGESORT</span>
     <h3 id="weatherTitle">Wetter wird geladen</h3>
     <div class="hero-weather-main"><span class="weather-symbol">⛅</span><strong id="weatherTemp">—</strong></div>
-    <p id="weatherText">Open‑Meteo · passend zu Datum und Region</p>
+    <p id="weatherText">Open‑Meteo · passend zu Datum und Region</p><div class="weather-details"><div class="weather-detail"><small>Regen</small><b id="weatherRain">—</b></div><div class="weather-detail"><small>Höchst / Tiefst</small><b id="weatherRange">—</b></div><div class="weather-detail"><small>Gefühlt</small><b id="weatherFeels">—</b></div></div><div class="weather-sun"><span>☀ Sonnenaufgang <b id="weatherSunrise">—</b></span><span>☾ Sonnenuntergang <b id="weatherSunset">—</b></span></div>
   </article>
 </div>
 <div class="dashboard-v2-grid">
@@ -157,10 +159,10 @@
 </div>
 </div>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
-<script src="data/trip-data.js?v=4.0.2-dashboard"></script>
-<script src="data/image-manifest.js?v=4.0.2-dashboard"></script>
-<script src="data/daily-extras.js?v=4.0.2-dashboard"></script>
-<script src="js/components/cards.js?v=4.0.2-dashboard"></script>
-<script defer="" src="js/app.js?v=4.0.2-dashboard"></script>
+<script src="data/trip-data.js?v=4.0.3-final-fixed"></script>
+<script src="data/image-manifest.js?v=4.0.3-final-fixed"></script>
+<script src="data/daily-extras.js?v=4.0.3-final-fixed"></script>
+<script src="js/components/cards.js?v=4.0.3-final-fixed"></script>
+<script defer="" src="js/app.js?v=4.0.3-final-fixed"></script>
 </body>
 </html>

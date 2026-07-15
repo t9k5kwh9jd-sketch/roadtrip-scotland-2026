@@ -1,6 +1,7 @@
-const CACHE = 'roadtrip-scotland-v4-final-tagebuch-visible-20260715-1';
+const CACHE = 'roadtrip-scotland-v4.0.3-final-fixed';
 const CORE = [
-  './', './index.html', './css/app.css', './css/variables.css', './css/base.css',
+  './', './index.html', './css/app.css',
+  './css/highlander.css', './css/variables.css', './css/base.css',
   './css/components.css', './css/pages.css', './data/trip-data.js', './data/image-manifest.js',
   './data/daily-extras.js', './data/map-data.js', './js/components/cards.js', './js/app.js',
   './manifest.webmanifest', './assets/icons/icon-180.png', './assets/icons/icon-192.png', './assets/icons/icon-512.png'

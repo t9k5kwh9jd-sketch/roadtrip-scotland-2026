@@ -33,10 +33,17 @@
 - Tagesbezogene Charlie-Fragen, Soundtrack und Ausgabensumme
 - JSON-Sicherung, Import und Druckansicht
 
-## 4.0.2 FINAL Dashboard
+## 4.0.3 FINAL Dashboard
 - Dashboard gemäß freigegebenem Bild-1-Design neu aufgebaut
 - verschwommenes Highlander-Hintergrundwort entfernt
 - Wetter in den Hero integriert
 - redundante Wetterkachel entfernt
 - NEU-Badge am Tagebuch entfernt
 - Tagebuch weiterhin vollständig beschreibbar und offline gespeichert
+
+## 5.0.0 — Highlander Edition
+- vollständiges Dashboard-Redesign gemäß freigegebener Bild-1-Richtung
+- neue breite Navigation, Premium-Hero und Wetterkarte
+- konsistentes dunkles Highlander-Design mit Grün- und Goldakzenten
+- responsive iPhone-Navigation
+- Tagebuch, Hot Spots, Karte, Budget und Reiseinhalte bleiben erhalten
