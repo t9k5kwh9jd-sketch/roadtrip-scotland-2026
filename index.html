@@ -9,14 +9,14 @@
 <meta content="yes" name="apple-mobile-web-app-capable"/>
 <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
 <meta content="Roadtrip Scotland" name="apple-mobile-web-app-title"/>
-<link href="manifest.webmanifest?v=6.0-dreamteam" rel="manifest"/>
+<link href="manifest.webmanifest?v=6.0.1-more-fix" rel="manifest"/>
 <link href="assets/icons/icon-180.png" rel="apple-touch-icon"/>
 <link href="assets/icons/icon-192.png" rel="icon"/>
-<link href="css/app.css?v=6.0-dreamteam" rel="stylesheet"/>
+<link href="css/app.css?v=6.0.1-more-fix" rel="stylesheet"/>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
 <title>Roadtrip Scotland 2026 · Highlander Edition</title>
-<meta name="build" content="6.0.0-HIGHLANDER-DREAMTEAM"/>
-<link href="css/highlander.css?v=6.0-dreamteam" rel="stylesheet"/>
+<meta name="build" content="6.0.1-HIGHLANDER-DREAMTEAM-MORE-FIX"/>
+<link href="css/highlander.css?v=6.0.1-more-fix" rel="stylesheet"/>
 </head>
 <body>
 <div aria-hidden="true" class="launch-screen" id="launchScreen"><div class="launch-mark">🏴</div><strong>Roadtrip Scotland 2026</strong><span>Es kann nur einen geben.</span><small>Charlie lädt das Abenteuer …</small></div>
@@ -29,7 +29,7 @@
 <button data-tab="karte"><span>⌖</span><b>Karte</b></button>
 <button data-tab="sehenswuerdigkeiten"><span>◆</span><b>Hot Spot</b></button>
 <button data-tab="essen"><span>♨</span><b>Essen</b></button>
-<button class="mobile-more-trigger" id="mobileMoreTrigger" type="button"><span>☰</span><b>Mehr</b></button>
+<button class="mobile-more-trigger" id="mobileMoreTrigger" data-tab="mehr" type="button"><span>☰</span><b>Mehr</b></button>
 <button data-tab="tickets"><span>◇</span><b>Tickets</b></button>
 <button data-tab="unterkuenfte"><span>⌂</span><b>Hotels</b></button>
 <button class="journal-nav" data-tab="tagebuch"><span>▤</span><b>Tagebuch</b></button>
@@ -138,6 +138,18 @@
     </div>
   </div>
 </section>
+
+<section class="view mobile-more-view" id="mehr">
+  <div class="section-head"><div><span class="overline">HIGHLANDER EDITION</span><h2>Mehr</h2><p>Alle weiteren Bereiche der Reise-App.</p></div></div>
+  <div class="more-page-grid">
+    <button type="button" data-open-tab="tickets"><span>◇</span><div><b>Tickets</b><small>Eintritte & Buchungen</small></div><i>›</i></button>
+    <button type="button" data-open-tab="unterkuenfte"><span>⌂</span><div><b>Hotels</b><small>Unterkünfte & Navigation</small></div><i>›</i></button>
+    <button type="button" data-open-tab="tagebuch"><span>▤</span><div><b>Tagebuch</b><small>Erinnerungen festhalten</small></div><i>›</i></button>
+    <button type="button" data-open-tab="packliste"><span>✓</span><div><b>Packen</b><small>Offline-Checkliste</small></div><i>›</i></button>
+    <button type="button" data-open-tab="budget"><span>£</span><div><b>Budget</b><small>Ausgaben & Übersicht</small></div><i>›</i></button>
+    <button type="button" data-open-tab="start"><span>👥</span><div><b>Dreamteam</b><small>Highlander Crew</small></div><i>›</i></button>
+  </div>
+</section>
 <section class="view" id="budget">
 <div class="section-head"><div><h2>Ausgabenbuch</h2><p>Sämtliche Reiseausgaben erfassen, auswerten und sichern.</p></div></div>
 <div class="budget-dashboard">
@@ -179,26 +191,11 @@
 </div>
 </div>
 
-<div class="mobile-more-sheet" id="mobileMoreSheet" aria-hidden="true">
-  <button class="mobile-more-backdrop" id="mobileMoreBackdrop" aria-label="Menü schließen"></button>
-  <section class="mobile-more-panel" role="dialog" aria-modal="true" aria-labelledby="mobileMoreTitle">
-    <div class="mobile-more-handle"></div>
-    <div class="mobile-more-head"><div><span class="overline">HIGHLANDER EDITION</span><h2 id="mobileMoreTitle">Mehr</h2></div><button id="mobileMoreClose" class="mobile-more-close" type="button" aria-label="Schließen">×</button></div>
-    <div class="mobile-more-grid">
-      <button data-more-tab="tickets"><span>◇</span><b>Tickets</b></button>
-      <button data-more-tab="unterkuenfte"><span>⌂</span><b>Hotels</b></button>
-      <button data-more-tab="tagebuch"><span>▤</span><b>Tagebuch</b></button>
-      <button data-more-tab="packliste"><span>✓</span><b>Packen</b></button>
-      <button data-more-tab="budget"><span>£</span><b>Budget</b></button>
-      <button data-more-tab="start"><span>👥</span><b>Dreamteam</b></button>
-    </div>
-  </section>
-</div>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
-<script src="data/trip-data.js?v=6.0-dreamteam"></script>
-<script src="data/image-manifest.js?v=6.0-dreamteam"></script>
-<script src="data/daily-extras.js?v=6.0-dreamteam"></script>
-<script src="js/components/cards.js?v=6.0-dreamteam"></script>
-<script defer="" src="js/app.js?v=6.0-dreamteam"></script>
+<script src="data/trip-data.js?v=6.0.1-more-fix"></script>
+<script src="data/image-manifest.js?v=6.0.1-more-fix"></script>
+<script src="data/daily-extras.js?v=6.0.1-more-fix"></script>
+<script src="js/components/cards.js?v=6.0.1-more-fix"></script>
+<script defer="" src="js/app.js?v=6.0.1-more-fix"></script>
 </body>
 </html>

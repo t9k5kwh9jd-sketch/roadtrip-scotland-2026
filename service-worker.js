@@ -1,4 +1,4 @@
-const CACHE = 'roadtrip-scotland-v6.0-highlander-dreamteam-release';
+const CACHE = 'roadtrip-scotland-v6.0.1-more-fixed';
 const CORE = [
   './', './index.html', './css/app.css',
   './css/highlander.css', './css/variables.css', './css/base.css',
