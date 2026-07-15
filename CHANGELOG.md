@@ -1,3 +1,8 @@
+## 5.2.0 — Highlander Motto
+- „Es kann nur einen geben.“ dauerhaft unter „Willkommen, Highlander.“
+- Highlander Edition in Branding und Footer ergänzt
+- Cache-Version aktualisiert
+
 # Changelog
 
 ## 4.0.1 FINAL – Tagebuch sichtbar

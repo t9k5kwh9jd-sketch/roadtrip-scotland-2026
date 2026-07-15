@@ -1,10 +1,10 @@
-const CACHE = 'roadtrip-scotland-v4.0.3-final-fixed';
+const CACHE = 'roadtrip-scotland-v5.2-highlander-motto';
 const CORE = [
   './', './index.html', './css/app.css',
   './css/highlander.css', './css/variables.css', './css/base.css',
   './css/components.css', './css/pages.css', './data/trip-data.js', './data/image-manifest.js',
   './data/daily-extras.js', './data/map-data.js', './js/components/cards.js', './js/app.js',
-  './manifest.webmanifest', './assets/icons/icon-180.png', './assets/icons/icon-192.png', './assets/icons/icon-512.png'
+  './manifest.webmanifest', './assets/images/photos/hero-highlands-v51.jpg', './assets/icons/icon-180.png', './assets/icons/icon-192.png', './assets/icons/icon-512.png'
 ];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(CORE)));
