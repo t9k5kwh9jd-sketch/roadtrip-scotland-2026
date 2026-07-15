@@ -46,4 +46,28 @@ body{background:radial-gradient(circle at 86% -8%,rgba(58,137,96,.34),transparen
 .charlie-card--highland{background:linear-gradient(135deg,#1d4937 0%,#2f684e 56%,#6f5b3f 100%);border:1px solid rgba(255,255,255,.12)}
 @media(max-width:720px){.dashboard-hero{background-position:58% center}.panel,.card{background:linear-gradient(145deg,rgba(36,91,67,.7),rgba(17,45,34,.58))}}
 
-.weather-card{border-left:3px solid #7bc7e8;background:linear-gradient(145deg,rgba(38,91,84,.72),rgba(19,49,43,.52))}.weather-card .daily-icon{color:#a9dcf2;border-color:rgba(169,220,242,.3);background:rgba(123,199,232,.13)}
+
+/* 4.0 ENDPRODUKT — visual consolidation */
+:root{--accent:#70d68c;--accent-strong:#98eeaa;--gold:#efb958;--ink:#f5f7f3;--muted:#b9c6bd;--surface-dark:#09231d;--line-bright:rgba(152,238,170,.22)}
+.dashboard-hero{background-image:linear-gradient(90deg,rgba(2,15,11,.93) 0%,rgba(2,15,11,.72) 42%,rgba(2,15,11,.18) 100%),url('../assets/images/photos/hero-highlands.jpg');background-position:center 45%;min-height:430px}
+.hero-copy h2{font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:clamp(48px,6.3vw,88px);line-height:.95;letter-spacing:-.04em;max-width:680px}
+.topbar-motto,.hero-title-lockup span{color:#efb958}.hero-title-lockup{display:none}
+.panel,.card{background:linear-gradient(145deg,rgba(18,73,55,.93),rgba(6,38,29,.92));border-color:var(--line-bright);box-shadow:0 24px 70px rgba(0,0,0,.28)}
+.quick-grid button{background:linear-gradient(145deg,rgba(47,144,100,.44),rgba(17,79,58,.48));border-color:rgba(152,238,170,.25)}
+.quick-grid button:hover{background:linear-gradient(145deg,rgba(72,170,121,.58),rgba(22,94,68,.62))}
+.media-card{background:#08241d!important;border:1px solid rgba(152,238,170,.23)!important;box-shadow:0 22px 55px rgba(0,0,0,.34)!important;color:#f5f7f3!important}
+.media-card__image-wrap{aspect-ratio:16/10;background:#071a15}
+.media-card__image{filter:saturate(.94) contrast(1.04)}
+.media-card__shade{background:linear-gradient(180deg,transparent 42%,rgba(3,17,13,.74))}
+.media-card__body{padding:1.28rem 1.35rem 1.45rem;background:linear-gradient(180deg,#0b3025,#071f19)}
+.media-card__body h3{color:#fff!important;font-family:Georgia,'Times New Roman',serif;font-size:clamp(1.42rem,2.2vw,1.9rem)!important;line-height:1.1}
+.media-card__body p{color:#d2ddd6!important;font-size:.96rem;line-height:1.58}
+.eyebrow-row{color:#91e8a7!important;font-weight:800;letter-spacing:.12em;font-size:.72rem}
+.card-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;padding:.9rem 0;border-top:1px solid rgba(152,238,170,.13);border-bottom:1px solid rgba(152,238,170,.13);color:#c9d7cf;font-size:.76rem}
+.component-actions .btn.primary{width:100%;background:linear-gradient(135deg,#efb958,#f4c972);color:#102018;font-weight:800}
+.section-head h2{font-family:Georgia,'Times New Roman',serif;color:#fff}
+.section-head p{color:#c0cdc5}
+.search{background:#0b2a21;border-color:rgba(152,238,170,.25);color:white}
+.search::placeholder{color:#9db1a5}
+.dock button[data-tab="sehenswuerdigkeiten"]{color:#9beaaf}
+@media(max-width:720px){.dashboard-hero{min-height:600px;background-position:61% center}.hero-copy h2{font-size:54px}.card-facts{grid-template-columns:1fr}.media-card__body{padding:1.15rem}}

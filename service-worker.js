@@ -1,10 +1,16 @@
-const CACHE = 'roadtrip-scotland-v4-final-20260715-1';
+const CACHE = 'roadtrip-scotland-v4-final-20260715a';
 const ASSETS = [
   './', './index.html', './css/app.css', './css/variables.css', './css/base.css',
   './css/components.css', './css/pages.css', './data/trip-data.js', './js/app.js',
   './data/image-manifest.js',
   './data/daily-extras.js', './data/map-data.js', './js/components/cards.js', './manifest.webmanifest', './assets/icons/icon-180.png',
   './assets/icons/icon-192.png', './assets/icons/icon-512.png',
+  './assets/images/photos/hero-highlands.jpg',
+  './assets/images/photos/edinburgh-castle.jpg',
+  './assets/images/photos/glenfinnan.jpg',
+  './assets/images/photos/eilean-donan.jpg',
+  './assets/images/photos/neist-point.jpg',
+  './assets/images/photos/journal-coast.jpg',
   './assets/images/heroes/highlands-master.svg',
   './assets/images/sights/the-vennel.svg',
   './assets/images/sights/victoria-terrace.svg',

@@ -5,13 +5,16 @@ window.CardComponents = (() => {
   const image = (src, alt) => `<div class="media-card__image-wrap"><img class="media-card__image" src="${safe(src)}" alt="${safe(alt)}" loading="lazy"><span class="media-card__shade"></span></div>`;
 
   function sightCard(item, src) {
+    const bestTime = item.best_time || item.bestTime || 'Licht vor Ort prüfen';
+    const duration = item.duration || item.duration_minutes ? `${item.duration || item.duration_minutes} Min.` : '1–2 Std.';
     return `<article class="media-card sight-card">
       ${image(src, item.place)}
       <div class="media-card__body">
-        <div class="eyebrow-row"><span>${safe(item.region)}</span><span>Fotospot</span></div>
+        <div class="eyebrow-row"><span>${safe(item.region)}</span><span>ENTDECKEN</span></div>
         <h3>${safe(item.place)}</h3>
         <p>${safe(item.tip || 'Licht, Wetter und sicheren Stand vor Ort prüfen.')}</p>
-        <div class="component-actions"><a class="btn" href="${maps(item.place + ' Scotland')}" target="_blank" rel="noopener">📍 Zum Fotospot</a></div>
+        <div class="card-facts"><span>◷ ${safe(duration)}</span><span>☀ ${safe(bestTime)}</span><span>📷 Fototipp</span></div>
+        <div class="component-actions"><a class="btn primary" href="${maps(item.place + ' Scotland')}" target="_blank" rel="noopener">Details & Navigation</a></div>
       </div>
     </article>`;
   }

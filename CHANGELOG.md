@@ -1,3 +1,12 @@
+# Changelog
+
+## 4.0.0 FINAL — Endprodukt
+- Sehenswürdigkeiten und Fotografie zu „Entdecken“ zusammengeführt
+- fotografische lokale Bildbibliothek statt Vektor-Platzhaltern
+- kontrastreiche dunkle Karten und vollständig lesbare Typografie
+- Dashboard gemäß freigegebener Premium-Designrichtung
+- vorhandene Reise-, Karten-, Budget-, Packlisten- und Offline-Funktionen erhalten
+
 # Version 4.0 FINALWE
 
 - Premium-Kontrast mit hellerem Highland-Grün

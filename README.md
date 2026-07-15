@@ -1,26 +1,17 @@
-# Roadtrip Scotland 2026
+# Roadtrip Scotland 2026 — Version 4.0 FINAL
 
-## Version 4.0 – Build 1 Foundation
+Premium-Offline-PWA für die Schottland-Rundreise im August 2026.
 
-Dauerhaft gepflegte, installierbare Offline-Reise-App für vier Personen. Dieser Stand ist die technische GitHub-Basis für Sprint 2 und Version 4.0 Final.
+## Finaler Stand
 
-## Starten
-Die App über einen lokalen Webserver oder GitHub Pages öffnen. Direktes Öffnen per `file://` unterstützt Service Worker nicht vollständig.
+- Premium-Dashboard mit „Es kann nur einen geben.“
+- „Entdecken“ vereint Sehenswürdigkeiten und Fotospots
+- 30 Ziele mit fotografischer Darstellung, Fototipps und Navigation
+- interaktive Offline-Karte
+- Tagesplan, Restaurants, Hotels, Tickets und Packliste
+- Budget Pro und täglicher Soundtrack/Spruch
+- lokaler PWA-Cache für iPhone und GitHub Pages
 
-## Struktur
-```text
-index.html
-css/                  Designsystem und UI
-js/                   Anwendungslogik
-js/components/        wiederverwendbare Komponenten
-data/                  zentrale Reisedaten
-assets/icons/          PWA-Icons
-assets/images/         Bilder für Sprint 2
-docs/                  Architekturhinweise
-service-worker.js      Offline-Cache
-manifest.webmanifest   PWA-Konfiguration
-CHANGELOG.md           Release-Historie
-```
+## Veröffentlichung
 
-## Entwicklungsregel
-GitHub ist ab diesem Build die zentrale Quelle. Neue Builds werden auf diesem Verzeichnis aufgebaut; ZIP-Dateien dienen nur noch als Übergabe oder Release-Archiv.
+Den **Inhalt dieses Ordners** in das Hauptverzeichnis des GitHub-Repositories laden. Anschließend die alte installierte PWA bzw. die Website-Daten einmal löschen, damit der neue Cache verwendet wird.
