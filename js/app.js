@@ -174,3 +174,17 @@ if ('serviceWorker' in navigator) {
   document.getElementById('journalPrint').onclick=()=>window.print();
   render(select.value);
 })();
+
+
+/* v6.0 iPhone Mehr-Menü */
+(()=>{
+ const sheet=document.getElementById('mobileMoreSheet'),trigger=document.getElementById('mobileMoreTrigger');
+ if(!sheet||!trigger)return;
+ const close=()=>{sheet.classList.remove('open');sheet.setAttribute('aria-hidden','true');trigger.classList.remove('active');document.body.style.overflow=''};
+ const open=()=>{sheet.classList.add('open');sheet.setAttribute('aria-hidden','false');trigger.classList.add('active');document.body.style.overflow='hidden'};
+ trigger.addEventListener('click',open);
+ document.getElementById('mobileMoreBackdrop')?.addEventListener('click',close);
+ document.getElementById('mobileMoreClose')?.addEventListener('click',close);
+ sheet.querySelectorAll('[data-more-tab]').forEach(btn=>btn.addEventListener('click',()=>{close();showTab(btn.dataset.moreTab)}));
+ document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
+})();
