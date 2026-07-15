@@ -1,5 +1,14 @@
 # Changelog
 
+## 4.0.1 FINAL – Tagebuch sichtbar
+- Tagebuch-Navigation prominent nach Hotels einsortiert
+- NEU-Badge in der Navigation
+- große Tagebuch-Karte auf dem Dashboard
+- Cache-Busting für CSS, JavaScript und Daten
+- Service Worker auf Network-First für Navigation und App-Dateien umgestellt
+
+# Changelog
+
 ## 4.0 FINAL – Morgen-Abnahme
 - Reiter „Hot Spot“
 - konsequent keine Fotos: vollständige, kontrastreiche Verlaufskacheln für Hot Spots und Restaurants

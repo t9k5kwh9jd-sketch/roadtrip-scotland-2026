@@ -9,12 +9,12 @@
 <meta content="yes" name="apple-mobile-web-app-capable"/>
 <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
 <meta content="Roadtrip Scotland" name="apple-mobile-web-app-title"/>
-<link href="manifest.webmanifest" rel="manifest"/>
+<link href="manifest.webmanifest?v=4.0.1-journal" rel="manifest"/>
 <link href="assets/icons/icon-180.png" rel="apple-touch-icon"/>
 <link href="assets/icons/icon-192.png" rel="icon"/>
-<link href="css/app.css" rel="stylesheet"/>
+<link href="css/app.css?v=4.0.1-journal" rel="stylesheet"/>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
-<title>Roadtrip Scotland 2026 · FINAL</title>
+<title>Roadtrip Scotland 2026 · FINAL · Tagebuch</title>
 </head>
 <body>
 <div aria-hidden="true" class="launch-screen" id="launchScreen"><div class="launch-mark">🏴</div><strong>Roadtrip Scotland 2026</strong><span>Es kann nur einen geben.</span><small>Charlie lädt das Abenteuer …</small></div>
@@ -29,9 +29,9 @@
 <button data-tab="essen"><span>♨</span><b>Essen</b></button>
 <button data-tab="tickets"><span>◇</span><b>Tickets</b></button>
 <button data-tab="unterkuenfte"><span>⌂</span><b>Hotels</b></button>
+<button class="journal-nav" data-tab="tagebuch"><span>▤</span><b>Tagebuch</b><small>NEU</small></button>
 <button data-tab="packliste"><span>✓</span><b>Packen</b></button>
 <button data-tab="budget"><span>£</span><b>Budget</b></button>
-<button data-tab="tagebuch"><span>▤</span><b>Tagebuch</b></button>
 </nav>
 <div class="sidebar-foot"><span class="status-dot"></span> Offline bereit<br/><small>Version 4.0 · FINAL</small></div>
 </aside>
@@ -81,6 +81,11 @@
 <button onclick="showTab('packliste')"><span>✓</span><b>Packliste</b><small>Offline gespeichert</small></button>
 <button onclick="showTab('tagebuch')"><span>▤</span><b>Tagebuch</b><small>Erinnerungen festhalten</small></button>
 </div>
+</article>
+<article class="panel journal-promo" onclick="showTab('tagebuch')" role="button" tabindex="0">
+  <div class="journal-promo-icon">▤</div>
+  <div><span class="overline">NEU · REISETAGEBUCH</span><h3>15 Tage. 15 Geschichten.</h3><p>Notizen, Stimmung, Tageshighlight, Whisky-Momente und Lieblingsfoto – alles offline gespeichert.</p></div>
+  <span class="journal-promo-arrow">→</span>
 </article>
 <article class="panel daily-card song-card">
 <div class="daily-icon">♪</div>
@@ -191,10 +196,10 @@
 </div>
 </div>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
-<script src="data/trip-data.js"></script>
-<script src="data/image-manifest.js"></script>
-<script src="data/daily-extras.js"></script>
-<script src="js/components/cards.js"></script>
-<script defer="" src="js/app.js"></script>
+<script src="data/trip-data.js?v=4.0.1-journal"></script>
+<script src="data/image-manifest.js?v=4.0.1-journal"></script>
+<script src="data/daily-extras.js?v=4.0.1-journal"></script>
+<script src="js/components/cards.js?v=4.0.1-journal"></script>
+<script defer="" src="js/app.js?v=4.0.1-journal"></script>
 </body>
 </html>
